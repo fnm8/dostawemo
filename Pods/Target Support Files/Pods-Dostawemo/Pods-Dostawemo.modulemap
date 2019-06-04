@@ -1,0 +1,6 @@
+framework module Pods_Dostawemo {
+  umbrella header "Pods-Dostawemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_DostawemoUITests {
+  umbrella header "Pods-DostawemoUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

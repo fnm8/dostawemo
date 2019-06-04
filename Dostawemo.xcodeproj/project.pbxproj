@@ -1,0 +1,746 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		101154969B76CBE7F58A5DD9 /* Pods_DostawemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94B473B698469464E791188 /* Pods_DostawemoTests.framework */; };
+		4CED5F3ADAADE64E1096C7A2 /* Pods_Dostawemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA644DD287F483AD93C4072 /* Pods_Dostawemo.framework */; };
+		79AD9D76E9C5FE47615DADE5 /* Pods_DostawemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962A6543813FE14821B6FD47 /* Pods_DostawemoUITests.framework */; };
+		E8EA28FE22A659D9000DF441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA28FD22A659D9000DF441 /* AppDelegate.swift */; };
+		E8EA290322A659D9000DF441 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EA290122A659D9000DF441 /* Main.storyboard */; };
+		E8EA290522A659DA000DF441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8EA290422A659DA000DF441 /* Assets.xcassets */; };
+		E8EA290822A659DA000DF441 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EA290622A659DA000DF441 /* LaunchScreen.storyboard */; };
+		E8EA291322A659DA000DF441 /* DostawemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA291222A659DA000DF441 /* DostawemoTests.swift */; };
+		E8EA291E22A659DA000DF441 /* DostawemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA291D22A659DA000DF441 /* DostawemoUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E8EA290F22A659DA000DF441 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8EA28F222A659D9000DF441 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8EA28F922A659D9000DF441;
+			remoteInfo = Dostawemo;
+		};
+		E8EA291A22A659DA000DF441 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8EA28F222A659D9000DF441 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8EA28F922A659D9000DF441;
+			remoteInfo = Dostawemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2540563B17967FB06BF8C4E4 /* Pods-DostawemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoTests.release.xcconfig"; path = "Target Support Files/Pods-DostawemoTests/Pods-DostawemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		32C0199B80860C415CF7E77A /* Pods-Dostawemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dostawemo.debug.xcconfig"; path = "Target Support Files/Pods-Dostawemo/Pods-Dostawemo.debug.xcconfig"; sourceTree = "<group>"; };
+		358F237C3F22C4CD79E665B1 /* Pods-DostawemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-DostawemoUITests/Pods-DostawemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7CA644DD287F483AD93C4072 /* Pods_Dostawemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dostawemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		962A6543813FE14821B6FD47 /* Pods_DostawemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DostawemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADFFE4BD4798B3A8CEB349A1 /* Pods-DostawemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoTests.debug.xcconfig"; path = "Target Support Files/Pods-DostawemoTests/Pods-DostawemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B259B473CD9EF10EEF221D01 /* Pods-DostawemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoUITests.release.xcconfig"; path = "Target Support Files/Pods-DostawemoUITests/Pods-DostawemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D94B473B698469464E791188 /* Pods_DostawemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DostawemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E644248681CA2E53A09E27C9 /* Pods-Dostawemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dostawemo.release.xcconfig"; path = "Target Support Files/Pods-Dostawemo/Pods-Dostawemo.release.xcconfig"; sourceTree = "<group>"; };
+		E8EA28FA22A659D9000DF441 /* Dostawemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dostawemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EA28FD22A659D9000DF441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E8EA290222A659D9000DF441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8EA290422A659DA000DF441 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E8EA290722A659DA000DF441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E8EA290922A659DA000DF441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8EA290E22A659DA000DF441 /* DostawemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DostawemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EA291222A659DA000DF441 /* DostawemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DostawemoTests.swift; sourceTree = "<group>"; };
+		E8EA291422A659DA000DF441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8EA291922A659DA000DF441 /* DostawemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DostawemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8EA291D22A659DA000DF441 /* DostawemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DostawemoUITests.swift; sourceTree = "<group>"; };
+		E8EA291F22A659DA000DF441 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E8EA28F722A659D9000DF441 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CED5F3ADAADE64E1096C7A2 /* Pods_Dostawemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA290B22A659DA000DF441 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				101154969B76CBE7F58A5DD9 /* Pods_DostawemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA291622A659DA000DF441 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				79AD9D76E9C5FE47615DADE5 /* Pods_DostawemoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		35B54D7EAFA11C852B61377F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				32C0199B80860C415CF7E77A /* Pods-Dostawemo.debug.xcconfig */,
+				E644248681CA2E53A09E27C9 /* Pods-Dostawemo.release.xcconfig */,
+				ADFFE4BD4798B3A8CEB349A1 /* Pods-DostawemoTests.debug.xcconfig */,
+				2540563B17967FB06BF8C4E4 /* Pods-DostawemoTests.release.xcconfig */,
+				358F237C3F22C4CD79E665B1 /* Pods-DostawemoUITests.debug.xcconfig */,
+				B259B473CD9EF10EEF221D01 /* Pods-DostawemoUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CD9132231465EE2299ED2FA1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7CA644DD287F483AD93C4072 /* Pods_Dostawemo.framework */,
+				D94B473B698469464E791188 /* Pods_DostawemoTests.framework */,
+				962A6543813FE14821B6FD47 /* Pods_DostawemoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E8EA28F122A659D9000DF441 = {
+			isa = PBXGroup;
+			children = (
+				E8EA28FC22A659D9000DF441 /* Dostawemo */,
+				E8EA291122A659DA000DF441 /* DostawemoTests */,
+				E8EA291C22A659DA000DF441 /* DostawemoUITests */,
+				E8EA28FB22A659D9000DF441 /* Products */,
+				35B54D7EAFA11C852B61377F /* Pods */,
+				CD9132231465EE2299ED2FA1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E8EA28FB22A659D9000DF441 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E8EA28FA22A659D9000DF441 /* Dostawemo.app */,
+				E8EA290E22A659DA000DF441 /* DostawemoTests.xctest */,
+				E8EA291922A659DA000DF441 /* DostawemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E8EA28FC22A659D9000DF441 /* Dostawemo */ = {
+			isa = PBXGroup;
+			children = (
+				E8EA28FD22A659D9000DF441 /* AppDelegate.swift */,
+				E8EA290122A659D9000DF441 /* Main.storyboard */,
+				E8EA292B22A65C5C000DF441 /* Supporting Files */,
+			);
+			path = Dostawemo;
+			sourceTree = "<group>";
+		};
+		E8EA291122A659DA000DF441 /* DostawemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E8EA291222A659DA000DF441 /* DostawemoTests.swift */,
+				E8EA291422A659DA000DF441 /* Info.plist */,
+			);
+			path = DostawemoTests;
+			sourceTree = "<group>";
+		};
+		E8EA291C22A659DA000DF441 /* DostawemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E8EA291D22A659DA000DF441 /* DostawemoUITests.swift */,
+				E8EA291F22A659DA000DF441 /* Info.plist */,
+			);
+			path = DostawemoUITests;
+			sourceTree = "<group>";
+		};
+		E8EA292B22A65C5C000DF441 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8EA290922A659DA000DF441 /* Info.plist */,
+				E8EA290622A659DA000DF441 /* LaunchScreen.storyboard */,
+				E8EA290422A659DA000DF441 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E8EA28F922A659D9000DF441 /* Dostawemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8EA292222A659DA000DF441 /* Build configuration list for PBXNativeTarget "Dostawemo" */;
+			buildPhases = (
+				C43F7683630EFADA81193656 /* [CP] Check Pods Manifest.lock */,
+				E8EA28F622A659D9000DF441 /* Sources */,
+				E8EA28F722A659D9000DF441 /* Frameworks */,
+				E8EA28F822A659D9000DF441 /* Resources */,
+				B69777C2D8E02345FF72D93A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dostawemo;
+			productName = Dostawemo;
+			productReference = E8EA28FA22A659D9000DF441 /* Dostawemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8EA290D22A659DA000DF441 /* DostawemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8EA292522A659DA000DF441 /* Build configuration list for PBXNativeTarget "DostawemoTests" */;
+			buildPhases = (
+				EF06A62AC27F6ECA083DF634 /* [CP] Check Pods Manifest.lock */,
+				E8EA290A22A659DA000DF441 /* Sources */,
+				E8EA290B22A659DA000DF441 /* Frameworks */,
+				E8EA290C22A659DA000DF441 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8EA291022A659DA000DF441 /* PBXTargetDependency */,
+			);
+			name = DostawemoTests;
+			productName = DostawemoTests;
+			productReference = E8EA290E22A659DA000DF441 /* DostawemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E8EA291822A659DA000DF441 /* DostawemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8EA292822A659DA000DF441 /* Build configuration list for PBXNativeTarget "DostawemoUITests" */;
+			buildPhases = (
+				1FDB0D5A11DCFB5C680A8F48 /* [CP] Check Pods Manifest.lock */,
+				E8EA291522A659DA000DF441 /* Sources */,
+				E8EA291622A659DA000DF441 /* Frameworks */,
+				E8EA291722A659DA000DF441 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8EA291B22A659DA000DF441 /* PBXTargetDependency */,
+			);
+			name = DostawemoUITests;
+			productName = DostawemoUITests;
+			productReference = E8EA291922A659DA000DF441 /* DostawemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E8EA28F222A659D9000DF441 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "beer-pool";
+				TargetAttributes = {
+					E8EA28F922A659D9000DF441 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					E8EA290D22A659DA000DF441 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = E8EA28F922A659D9000DF441;
+					};
+					E8EA291822A659DA000DF441 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = E8EA28F922A659D9000DF441;
+					};
+				};
+			};
+			buildConfigurationList = E8EA28F522A659D9000DF441 /* Build configuration list for PBXProject "Dostawemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E8EA28F122A659D9000DF441;
+			productRefGroup = E8EA28FB22A659D9000DF441 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E8EA28F922A659D9000DF441 /* Dostawemo */,
+				E8EA290D22A659DA000DF441 /* DostawemoTests */,
+				E8EA291822A659DA000DF441 /* DostawemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E8EA28F822A659D9000DF441 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8EA290822A659DA000DF441 /* LaunchScreen.storyboard in Resources */,
+				E8EA290522A659DA000DF441 /* Assets.xcassets in Resources */,
+				E8EA290322A659D9000DF441 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA290C22A659DA000DF441 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA291722A659DA000DF441 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1FDB0D5A11DCFB5C680A8F48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DostawemoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B69777C2D8E02345FF72D93A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Dostawemo/Pods-Dostawemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Dostawemo/Pods-Dostawemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C43F7683630EFADA81193656 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Dostawemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF06A62AC27F6ECA083DF634 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DostawemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E8EA28F622A659D9000DF441 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8EA28FE22A659D9000DF441 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA290A22A659DA000DF441 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8EA291322A659DA000DF441 /* DostawemoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8EA291522A659DA000DF441 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8EA291E22A659DA000DF441 /* DostawemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E8EA291022A659DA000DF441 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8EA28F922A659D9000DF441 /* Dostawemo */;
+			targetProxy = E8EA290F22A659DA000DF441 /* PBXContainerItemProxy */;
+		};
+		E8EA291B22A659DA000DF441 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8EA28F922A659D9000DF441 /* Dostawemo */;
+			targetProxy = E8EA291A22A659DA000DF441 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E8EA290122A659D9000DF441 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8EA290222A659D9000DF441 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E8EA290622A659DA000DF441 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8EA290722A659DA000DF441 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E8EA292022A659DA000DF441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E8EA292122A659DA000DF441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8EA292322A659DA000DF441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32C0199B80860C415CF7E77A /* Pods-Dostawemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7UMAHMKH2W;
+				INFOPLIST_FILE = Dostawemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.applabs.dostawemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8EA292422A659DA000DF441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E644248681CA2E53A09E27C9 /* Pods-Dostawemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7UMAHMKH2W;
+				INFOPLIST_FILE = Dostawemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ru.applabs.dostawemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E8EA292622A659DA000DF441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADFFE4BD4798B3A8CEB349A1 /* Pods-DostawemoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YRE4WYUY8X;
+				INFOPLIST_FILE = DostawemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DostawemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dostawemo.app/Dostawemo";
+			};
+			name = Debug;
+		};
+		E8EA292722A659DA000DF441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2540563B17967FB06BF8C4E4 /* Pods-DostawemoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YRE4WYUY8X;
+				INFOPLIST_FILE = DostawemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DostawemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dostawemo.app/Dostawemo";
+			};
+			name = Release;
+		};
+		E8EA292922A659DA000DF441 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 358F237C3F22C4CD79E665B1 /* Pods-DostawemoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YRE4WYUY8X;
+				INFOPLIST_FILE = DostawemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DostawemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Dostawemo;
+			};
+			name = Debug;
+		};
+		E8EA292A22A659DA000DF441 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B259B473CD9EF10EEF221D01 /* Pods-DostawemoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YRE4WYUY8X;
+				INFOPLIST_FILE = DostawemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.DostawemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Dostawemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E8EA28F522A659D9000DF441 /* Build configuration list for PBXProject "Dostawemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8EA292022A659DA000DF441 /* Debug */,
+				E8EA292122A659DA000DF441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8EA292222A659DA000DF441 /* Build configuration list for PBXNativeTarget "Dostawemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8EA292322A659DA000DF441 /* Debug */,
+				E8EA292422A659DA000DF441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8EA292522A659DA000DF441 /* Build configuration list for PBXNativeTarget "DostawemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8EA292622A659DA000DF441 /* Debug */,
+				E8EA292722A659DA000DF441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8EA292822A659DA000DF441 /* Build configuration list for PBXNativeTarget "DostawemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8EA292922A659DA000DF441 /* Debug */,
+				E8EA292A22A659DA000DF441 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E8EA28F222A659D9000DF441 /* Project object */;
+}
