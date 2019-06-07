@@ -7,7 +7,8 @@ target 'Dostawemo' do
 
   # Pods for Dostawemo
 	pod 'Firebase/Analytics'
-	pod 'Firebase/Database'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Firestore'
 	pod 'RxSwift', '~> 5'
     	pod 'RxCocoa', '~> 5'
 

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="390" id="KGk-i7-Jjw" customClass="ProductPreviewTableViewCell" customModule="Dostawemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="390"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="389.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Oh7-58-Pwz">
+                        <rect key="frame" x="20" y="8" width="339" height="373.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-3b-I3W">
+                                <rect key="frame" x="0.0" y="0.0" width="339" height="321.5"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6U-Ry-wOM">
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="321.5"/>
+                                    </scrollView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RmC-Uz-EO8">
+                                        <rect key="frame" x="0.0" y="284.5" width="339" height="37"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="RmC-Uz-EO8" secondAttribute="trailing" id="0Pv-lF-VL3"/>
+                                    <constraint firstAttribute="trailing" secondItem="y6U-Ry-wOM" secondAttribute="trailing" id="6b4-pK-6T3"/>
+                                    <constraint firstAttribute="bottom" secondItem="RmC-Uz-EO8" secondAttribute="bottom" id="9CO-Ei-0K5"/>
+                                    <constraint firstAttribute="bottom" secondItem="y6U-Ry-wOM" secondAttribute="bottom" id="Y8v-gt-7mX"/>
+                                    <constraint firstItem="y6U-Ry-wOM" firstAttribute="top" secondItem="hBF-3b-I3W" secondAttribute="top" id="jdS-Y5-dA8"/>
+                                    <constraint firstItem="y6U-Ry-wOM" firstAttribute="leading" secondItem="hBF-3b-I3W" secondAttribute="leading" id="pqI-8X-489"/>
+                                    <constraint firstItem="RmC-Uz-EO8" firstAttribute="leading" secondItem="hBF-3b-I3W" secondAttribute="leading" id="yZh-6r-vPP"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYW-Pa-Qla">
+                                <rect key="frame" x="0.0" y="329.5" width="339" height="44"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product description Product description Product description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJX-Fr-R4x">
+                                        <rect key="frame" x="0.0" y="0.0" width="235" height="44"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yD0-Gs-IoL">
+                                        <rect key="frame" x="243" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="C5Y-el-vX0"/>
+                                            <constraint firstAttribute="height" constant="44" id="Xwb-pL-5JB"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="favs"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Iv-uO-ZUn">
+                                        <rect key="frame" x="295" y="0.0" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="44" id="NWX-Df-DMr"/>
+                                            <constraint firstAttribute="height" constant="44" id="zH5-82-7Sl"/>
+                                        </constraints>
+                                        <state key="normal" image="shared"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="Oh7-58-Pwz" secondAttribute="trailing" constant="20" id="Rh7-zZ-G9A"/>
+                    <constraint firstItem="Oh7-58-Pwz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="UWr-yz-D60"/>
+                    <constraint firstItem="Oh7-58-Pwz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="kXc-gQ-Cjr"/>
+                    <constraint firstAttribute="bottom" secondItem="Oh7-58-Pwz" secondAttribute="bottom" constant="8" id="xS1-GX-V3P"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="descriptionLabel" destination="GJX-Fr-R4x" id="Hl3-hg-cb5"/>
+                <outlet property="favsButton" destination="yD0-Gs-IoL" id="uyd-LT-ueV"/>
+                <outlet property="imageScrollView" destination="y6U-Ry-wOM" id="CU5-x0-XhW"/>
+                <outlet property="pageControll" destination="RmC-Uz-EO8" id="ss2-ig-NOj"/>
+                <outlet property="sharedButton" destination="2Iv-uO-ZUn" id="qla-It-vFs"/>
+            </connections>
+            <point key="canvasLocation" x="170.28985507246378" y="150.66964285714286"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="favs" width="24" height="24"/>
+        <image name="shared" width="24" height="24"/>
+    </resources>
+</document>

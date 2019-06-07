@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wKO-ud-uBM">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="wWg-jg-Oqx">
+            <objects>
+                <tabBarController id="wKO-ud-uBM" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xSY-qe-FLg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="46a-Z4-AgD" kind="relationship" relationship="viewControllers" id="rM0-d4-hk2"/>
+                        <segue destination="DNn-k3-aJz" kind="relationship" relationship="viewControllers" id="QHe-pq-f9q"/>
+                        <segue destination="p0f-mG-4xt" kind="relationship" relationship="viewControllers" id="gDb-jY-TNp"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l0y-78-y8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-395" y="-54"/>
+        </scene>
+        <!-- Поиск-->
+        <scene sceneID="oNG-Aw-kns">
+            <objects>
+                <viewController id="46a-Z4-AgD" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R4o-Ix-k6l">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jg-Kk-Crb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <segue destination="ehL-xQ-mVW" kind="embed" id="3ZS-Ck-7gb"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5jg-Kk-Crb" firstAttribute="bottom" secondItem="KPG-3F-zZj" secondAttribute="bottom" id="6XN-da-r2P"/>
+                            <constraint firstItem="5jg-Kk-Crb" firstAttribute="trailing" secondItem="KPG-3F-zZj" secondAttribute="trailing" id="TOh-Dg-BV8"/>
+                            <constraint firstItem="5jg-Kk-Crb" firstAttribute="top" secondItem="R4o-Ix-k6l" secondAttribute="top" id="h7k-lz-HGi"/>
+                            <constraint firstItem="5jg-Kk-Crb" firstAttribute="leading" secondItem="KPG-3F-zZj" secondAttribute="leading" id="jDN-wp-uB6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KPG-3F-zZj"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title=" Поиск" id="ef0-od-75y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q0b-uv-XKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1349.2753623188407" y="689.73214285714278"/>
+        </scene>
+        <!--WE-->
+        <scene sceneID="1bT-Ha-xac">
+            <objects>
+                <viewController id="DNn-k3-aJz" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HEk-1C-hJb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="SXj-k8-L8t"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="WE" id="0L4-zH-13Z"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dqV-GN-Fdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-370" y="690"/>
+        </scene>
+        <!--Отзывы-->
+        <scene sceneID="vGL-ai-TbH">
+            <objects>
+                <viewController id="p0f-mG-4xt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="86R-uU-lLg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSS-cq-svc">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <segue destination="lPG-By-FEg" kind="embed" id="Xel-hc-iKT"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aSS-cq-svc" firstAttribute="leading" secondItem="EDw-E3-Qdu" secondAttribute="leading" id="0uh-gM-yUC"/>
+                            <constraint firstItem="aSS-cq-svc" firstAttribute="trailing" secondItem="EDw-E3-Qdu" secondAttribute="trailing" id="JNf-LM-boj"/>
+                            <constraint firstItem="aSS-cq-svc" firstAttribute="bottom" secondItem="EDw-E3-Qdu" secondAttribute="bottom" id="ZNw-xe-UOY"/>
+                            <constraint firstItem="aSS-cq-svc" firstAttribute="top" secondItem="86R-uU-lLg" secondAttribute="top" id="gwA-JW-eKO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="EDw-E3-Qdu"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Отзывы" id="wAD-0w-yEd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FYq-W0-Uzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705.79710144927537" y="689.73214285714278"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="vEm-HG-2oa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Account" id="lPG-By-FEg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bWO-Wt-fHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="705" y="1130"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="oFT-ud-OB0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="ehL-xQ-mVW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkO-5W-qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1349" y="1119"/>
+        </scene>
+    </scenes>
+</document>
