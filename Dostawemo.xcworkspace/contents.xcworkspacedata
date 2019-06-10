@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SearchCollectionViewHeader.xib">
-   </FileRef>
-   <FileRef
       location = "group:Dostawemo.xcodeproj">
    </FileRef>
    <FileRef

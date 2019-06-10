@@ -20,6 +20,7 @@
 		E84B824622AA64450057EB4B /* PriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E84B824422AA64450057EB4B /* PriceTableViewCell.xib */; };
 		E88ED98F22AE4E2500F9F3BC /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88ED98E22AE4E2500F9F3BC /* String+Extension.swift */; };
 		E88ED99122AE521100F9F3BC /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88ED99022AE521100F9F3BC /* UIImageView+Extension.swift */; };
+		E88ED99322AE558F00F9F3BC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E88ED99222AE558F00F9F3BC /* GoogleService-Info.plist */; };
 		E8EA28FE22A659D9000DF441 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA28FD22A659D9000DF441 /* AppDelegate.swift */; };
 		E8EA290322A659D9000DF441 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EA290122A659D9000DF441 /* Main.storyboard */; };
 		E8EA290522A659DA000DF441 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8EA290422A659DA000DF441 /* Assets.xcassets */; };
@@ -32,7 +33,6 @@
 		E8EA293822A6688B000DF441 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA293722A6688B000DF441 /* UIImage+Extension.swift */; };
 		E8EA293B22A669D9000DF441 /* Basket.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8EA293A22A669D9000DF441 /* Basket.storyboard */; };
 		E8EA293E22A66A20000DF441 /* BasketSceneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA293D22A66A20000DF441 /* BasketSceneTableViewController.swift */; };
-		E8EA294A22A7BE62000DF441 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8EA294922A7BE62000DF441 /* GoogleService-Info.plist */; };
 		E8EA294D22A7BF89000DF441 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA294C22A7BF89000DF441 /* Product.swift */; };
 		E8EA295022A7C401000DF441 /* TopProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA294F22A7C401000DF441 /* TopProductsViewController.swift */; };
 		E8EA295222A7C44B000DF441 /* TopProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EA295122A7C44B000DF441 /* TopProductsViewModel.swift */; };
@@ -85,6 +85,7 @@
 		E84B824422AA64450057EB4B /* PriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceTableViewCell.xib; sourceTree = "<group>"; };
 		E88ED98E22AE4E2500F9F3BC /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E88ED99022AE521100F9F3BC /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		E88ED99222AE558F00F9F3BC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8EA28FA22A659D9000DF441 /* Dostawemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dostawemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8EA28FD22A659D9000DF441 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8EA290222A659D9000DF441 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		E8EA293722A6688B000DF441 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		E8EA293A22A669D9000DF441 /* Basket.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Basket.storyboard; sourceTree = "<group>"; };
 		E8EA293D22A66A20000DF441 /* BasketSceneTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketSceneTableViewController.swift; sourceTree = "<group>"; };
-		E8EA294922A7BE62000DF441 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E8EA294C22A7BF89000DF441 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E8EA294F22A7C401000DF441 /* TopProductsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProductsViewController.swift; sourceTree = "<group>"; };
 		E8EA295122A7C44B000DF441 /* TopProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopProductsViewModel.swift; sourceTree = "<group>"; };
@@ -232,7 +232,7 @@
 				E8EA292D22A663EA000DF441 /* Account */,
 				E8EA292B22A65C5C000DF441 /* Supporting Files */,
 				E8EA290922A659DA000DF441 /* Info.plist */,
-				E8EA294922A7BE62000DF441 /* GoogleService-Info.plist */,
+				E88ED99222AE558F00F9F3BC /* GoogleService-Info.plist */,
 			);
 			path = Dostawemo;
 			sourceTree = "<group>";
@@ -536,9 +536,9 @@
 				E84B824622AA64450057EB4B /* PriceTableViewCell.xib in Resources */,
 				E8EA290322A659D9000DF441 /* Main.storyboard in Resources */,
 				E84B823522AA54240057EB4B /* ProductTableViewController.xib in Resources */,
+				E88ED99322AE558F00F9F3BC /* GoogleService-Info.plist in Resources */,
 				E8EA295722A7C53E000DF441 /* TopProductCollectionViewCell.xib in Resources */,
 				E8EA295E22A90ACB000DF441 /* Account.storyboard in Resources */,
-				E8EA294A22A7BE62000DF441 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -880,7 +880,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.app-labs.dostawemo";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.applabs.dostawemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -901,7 +901,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "ru.app-labs.dostawemo";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.applabs.dostawemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
