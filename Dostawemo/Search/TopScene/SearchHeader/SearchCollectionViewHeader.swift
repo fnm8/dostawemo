@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SearchCollectionViewHeader: UIView {
+class SearchCollectionViewHeader: UICollectionReusableView {
 
+    @IBOutlet weak var searchButton: UIButton!
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

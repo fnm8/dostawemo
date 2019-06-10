@@ -20,12 +20,13 @@ class TopProductCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        productImageView.imageCornerRadius()
     }
 
     func configurate(product: Product){
         productImageView.image = nil
-        priceLabel.text = product.price == nil ? "" : String(product.price!)
-        marketPriceLabel.text = product.marketPrice == nil ? "" : String(product.marketPrice!)
+        priceLabel.text = product.price == nil ? "" : String(product.price!).addRubPostfix()
+        marketPriceLabel.text = product.marketPrice == nil ? "" : String(product.marketPrice!).addRubPostfix()
         nameProductLabel.text = product.name
         detailProductLabel.text = ""
         loadImage(product: product)

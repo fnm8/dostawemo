@@ -21,14 +21,14 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8x4-aQ-C11">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aEp-UD-ls7">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aEp-UD-ls7">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="8" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchHeader" id="Vcl-L6-0IV">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SearchHeader" id="Vcl-L6-0IV" customClass="SearchCollectionViewHeader" customModule="Dostawemo" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -43,6 +43,9 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="r2U-7o-3ZM" secondAttribute="trailing" constant="20" id="JlT-6a-CLO"/>
                                         <constraint firstItem="r2U-7o-3ZM" firstAttribute="leading" secondItem="Vcl-L6-0IV" secondAttribute="leadingMargin" constant="20" id="riN-uw-Q4t"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="searchButton" destination="r2U-7o-3ZM" id="AC5-bu-60p"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>

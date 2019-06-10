@@ -20,7 +20,7 @@ class TopProductsViewController: UIViewController {
     var basket: UIBarButtonItem!
     var viewModel: TopProductsViewModel!
     
-    private let sectionInsets = UIEdgeInsets(top: 8.0, left: 4.0, bottom: 8.0, right: 4.0)
+    private let sectionInsets = UIEdgeInsets(top: 10.0, left: 8.0, bottom: 10.0, right: 8.0)
     private let itemsPerRow: CGFloat = 2
     
     override func viewDidLoad() {
@@ -39,6 +39,7 @@ class TopProductsViewController: UIViewController {
     private func configurateCollectionView(){
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.contentInset = sectionInsets
 
         collectionView.register(
             UINib(nibName: "TopProductCollectionViewCell", bundle: nil),
@@ -60,6 +61,12 @@ class TopProductsViewController: UIViewController {
 }
 
 extension TopProductsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.products.value.count
     }
@@ -81,13 +88,9 @@ extension TopProductsViewController: UICollectionViewDataSource, UICollectionVie
 extension TopProductsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        let heightPerItem = widthPerItem  + widthPerItem / 2
-        
-        return CGSize(width: widthPerItem, height: heightPerItem)
+        let width = (collectionView.bounds.width / 2) - sectionInsets.left * itemsPerRow
+        let height = width * 2 - sectionInsets.top * itemsPerRow
+        return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView,
