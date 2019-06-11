@@ -12,18 +12,16 @@ class PriceTableViewCell: UITableViewCell {
 
     @IBOutlet weak var marketPriceLabel: UILabel!
     @IBOutlet weak var dostawemoPriceLabel: UILabel!
-    @IBOutlet weak var appNameLabel: UILabel!
-    
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        appNameLabel.attributedText = Config.appAttributeName
     }
 
     func configurate(product: Product){
-        marketPriceLabel.text = product.marketPrice != nil ? String(product.marketPrice!) : ""
-        dostawemoPriceLabel.text = product.price != nil ? String(product.price!) : ""
+        dump(product)
+        marketPriceLabel.text = product.marketPrice != nil ? String(product.marketPrice!).addRubPostfix() : ""
+        dostawemoPriceLabel.text = product.price != nil ? String(product.price!).addRubPostfix() : ""
     }
     
 }

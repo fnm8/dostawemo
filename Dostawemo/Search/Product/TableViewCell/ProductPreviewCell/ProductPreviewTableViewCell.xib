@@ -12,24 +12,27 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="390" id="KGk-i7-Jjw" customClass="ProductPreviewTableViewCell" customModule="Dostawemo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="379" height="390"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="376" id="KGk-i7-Jjw" customClass="ProductPreviewTableViewCell" customModule="Dostawemo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="376"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="379" height="389.5"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="379" height="375.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Oh7-58-Pwz">
-                        <rect key="frame" x="20" y="8" width="339" height="373.5"/>
+                        <rect key="frame" x="20" y="8.5" width="339" height="360"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hBF-3b-I3W">
-                                <rect key="frame" x="0.0" y="0.0" width="339" height="321.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="339" height="308"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y6U-Ry-wOM">
-                                        <rect key="frame" x="0.0" y="0.0" width="339" height="321.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="339" height="308"/>
                                     </scrollView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RmC-Uz-EO8">
-                                        <rect key="frame" x="0.0" y="284.5" width="339" height="37"/>
+                                    <pageControl opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RmC-Uz-EO8">
+                                        <rect key="frame" x="0.0" y="271" width="339" height="37"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </pageControl>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -44,7 +47,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wYW-Pa-Qla">
-                                <rect key="frame" x="0.0" y="329.5" width="339" height="44"/>
+                                <rect key="frame" x="0.0" y="316" width="339" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product description Product description Product description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJX-Fr-R4x">
                                         <rect key="frame" x="0.0" y="0.0" width="235" height="44"/>
@@ -69,8 +72,14 @@
                                         <state key="normal" image="shared"/>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="kAd-q9-ZKe"/>
+                                </constraints>
                             </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="360" id="Njg-76-v1o"/>
+                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -88,7 +97,7 @@
                 <outlet property="pageControll" destination="RmC-Uz-EO8" id="ss2-ig-NOj"/>
                 <outlet property="sharedButton" destination="2Iv-uO-ZUn" id="qla-It-vFs"/>
             </connections>
-            <point key="canvasLocation" x="170.28985507246378" y="150.66964285714286"/>
+            <point key="canvasLocation" x="170.28985507246378" y="145.98214285714286"/>
         </tableViewCell>
     </objects>
     <resources>

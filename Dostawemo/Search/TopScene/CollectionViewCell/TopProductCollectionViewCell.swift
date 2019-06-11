@@ -29,25 +29,36 @@ class TopProductCollectionViewCell: UICollectionViewCell {
         marketPriceLabel.text = product.marketPrice == nil ? "" : String(product.marketPrice!).addRubPostfix()
         nameProductLabel.text = product.name
         detailProductLabel.text = ""
-        loadImage(product: product)
         DispatchQueue.main.async {
             self.activity = UIActivityIndicatorView()
+            self.activity?.color = .red
             self.activity!.frame = self.productImageView.bounds
             self.activity!.startAnimating()
             self.productImageView.addSubview(self.activity!)
         }
+        setImage(product: product)
     }
     
-    private func loadImage(product: Product){
-        if product.images.isEmpty { return }
-
-        if let url = URL( string: product.images.first!) {
+    private func setImage(product: Product){
+        if product.imagesPath.isEmpty{ return }
+        if let image = product.imagesHash[product.imagesPath.first!] {
+            DispatchQueue.main.async {
+                self.productImageView.image = image
+                self.activity?.removeFromSuperview()
+                self.activity = nil
+            }
+            return
+        }
+        if let url = URL( string: product.imagesPath.first!) {
             DispatchQueue.global().async {
                 if let data = try? Data( contentsOf:url) {
                     DispatchQueue.main.async {
-                        self.productImageView.image = UIImage( data:data)
-                        self.activity?.removeFromSuperview()
-                        self.activity = nil
+                        if let image = UIImage( data:data){
+                            self.productImageView.image = image
+                            product.imagesHash[product.imagesPath.first!] = image
+                            self.activity?.removeFromSuperview()
+                            self.activity = nil
+                        }
                     }
                 }
             }

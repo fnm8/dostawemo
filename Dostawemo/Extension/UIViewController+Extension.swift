@@ -12,10 +12,10 @@ import UIKit
 extension UIViewController {
     
     func setAppTitle(){
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 19)
-        titleLabel.attributedText = Config.appAttributeName
-        navigationItem.titleView = titleLabel
+        let image = UIImage(named: "logo")
+        let imageView = UIImageView()
+        imageView.image = image
+        navigationItem.titleView = imageView
     }
 }
 

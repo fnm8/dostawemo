@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Main View Controller-->
         <scene sceneID="wWg-jg-Oqx">
             <objects>
-                <tabBarController id="wKO-ud-uBM" sceneMemberID="viewController">
+                <tabBarController id="wKO-ud-uBM" customClass="MainViewController" customModule="Dostawemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xSY-qe-FLg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -21,7 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="46a-Z4-AgD" kind="relationship" relationship="viewControllers" id="rM0-d4-hk2"/>
-                        <segue destination="DNn-k3-aJz" kind="relationship" relationship="viewControllers" id="QHe-pq-f9q"/>
+                        <segue destination="7LF-FB-JJP" kind="relationship" relationship="viewControllers" id="BK3-ZG-dId"/>
                         <segue destination="p0f-mG-4xt" kind="relationship" relationship="viewControllers" id="gDb-jY-TNp"/>
                     </connections>
                 </tabBarController>
@@ -29,7 +29,7 @@
             </objects>
             <point key="canvasLocation" x="-395" y="-54"/>
         </scene>
-        <!-- Поиск-->
+        <!--Поиск-->
         <scene sceneID="oNG-Aw-kns">
             <objects>
                 <viewController id="46a-Z4-AgD" sceneMemberID="viewController">
@@ -53,27 +53,27 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KPG-3F-zZj"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title=" Поиск" id="ef0-od-75y"/>
+                    <tabBarItem key="tabBarItem" title="Поиск" image="search" id="ef0-od-75y"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0b-uv-XKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1349.2753623188407" y="689.73214285714278"/>
         </scene>
-        <!--WE-->
-        <scene sceneID="1bT-Ha-xac">
+        <!--View Controller-->
+        <scene sceneID="ggk-3p-pmd">
             <objects>
-                <viewController id="DNn-k3-aJz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="HEk-1C-hJb">
+                <viewController id="7LF-FB-JJP" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1NY-ez-9UN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="SXj-k8-L8t"/>
+                        <viewLayoutGuide key="safeArea" id="LsY-g4-fmR"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="WE" id="0L4-zH-13Z"/>
+                    <tabBarItem key="tabBarItem" title="" id="Dvr-Eu-kbX"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dqV-GN-Fdo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FzZ-kQ-FKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-370" y="690"/>
+            <point key="canvasLocation" x="-403" y="696"/>
         </scene>
         <!--Отзывы-->
         <scene sceneID="vGL-ai-TbH">
@@ -99,7 +99,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EDw-E3-Qdu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Отзывы" id="wAD-0w-yEd"/>
+                    <tabBarItem key="tabBarItem" title="Отзывы" image="feedbacks" id="wAD-0w-yEd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYq-W0-Uzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -122,4 +122,8 @@
             <point key="canvasLocation" x="-1349" y="1119"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="feedbacks" width="31" height="29"/>
+        <image name="search" width="28" height="24"/>
+    </resources>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductPreviewTableViewCell: UITableViewCell {
+class ProductPreviewTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var favsButton: UIButton!
@@ -22,40 +22,71 @@ class ProductPreviewTableViewCell: UITableViewCell {
         favsButton.tintColor = .black
         sharedButton.setImage(UIImage.shared, for: .normal)
         sharedButton.tintColor = .red
+        contentView.bringSubviewToFront(pageControll)
     }
     
     func configurate(product: Product){
-        dump(product)
         descriptionLabel.text = product.name
         configurateScrollView(product: product)
+        configuratePageControl(product: product)
     }
     
     private func configurateScrollView(product: Product){
-        let width = imageScrollView.bounds.width * CGFloat(product.images.count)
+        let width = imageScrollView.bounds.width * CGFloat(product.imagesPath.count)
         let height = imageScrollView.bounds.height
         imageScrollView.contentSize = CGSize(width: width, height: height)
         imageScrollView.isPagingEnabled = true
+        imageScrollView.showsHorizontalScrollIndicator = false
+        imageScrollView.delegate = self
         
-        product.images.forEach{
-            let frame = self.imageScrollView.bounds
+        
+        for (index, path) in product.imagesPath.enumerated(){
+            let y: CGFloat = CGFloat(0)
+            let x: CGFloat = CGFloat(0) + imageScrollView.bounds.width * CGFloat(index)
+            let frame = CGRect(
+                x: x, y: y,
+                width: imageScrollView.bounds.width,
+                height: imageScrollView.bounds.height
+            )
+
             let imageView = UIImageView(frame: frame)
-            self.imageScrollView.addSubview(imageView)
-            self.loadImage(path: $0, imageView: imageView)
-        }
-    }
-    
-    private func loadImage(path: String, imageView: UIImageView){
-        print(path)
-        if let url = URL( string: path) {
-            DispatchQueue.global().async {
-                if let data = try? Data( contentsOf:url) {
-                    DispatchQueue.main.async {
-                        imageView.image = UIImage( data:data)
-//                        self.activity?.removeFromSuperview()
-//                        self.activity = nil
+            
+            if let image = product.imagesHash[path] {
+                setImage(imageView: imageView, image: image)
+            } else {
+                DispatchQueue.global().async {
+                    if let url = URL( string: path),
+                        let data = try? Data( contentsOf: url) {
+                        DispatchQueue.main.async {
+                            if let image = UIImage( data:data){
+                                self.setImage(imageView: imageView, image: image)
+                                product.imagesHash[path] = image
+                            }
+                        }
                     }
                 }
             }
         }
+    }
+    
+    private func configuratePageControl(product: Product){
+        if product.imagesPath.isEmpty || product.imagesPath.count == 1 {
+            pageControll.isHidden = true
+            return
+        }
+        pageControll.numberOfPages = product.imagesPath.count
+    }
+    
+    func setImage(imageView: UIImageView, image: UIImage){
+        DispatchQueue.main.async {
+            imageView.image = image
+            imageView.contentMode = .scaleAspectFit
+            self.imageScrollView.addSubview(imageView)
+        }
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageNumber = round(scrollView.contentOffset.x / scrollView.frame.size.width)
+        pageControll.currentPage = Int(pageNumber)
     }
 }
