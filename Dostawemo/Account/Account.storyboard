@@ -144,27 +144,30 @@
                         <outlet property="segmentControl" destination="ZDt-l7-dR1" id="b7W-X6-SPE"/>
                         <outlet property="userImageView" destination="b2X-xr-3Rd" id="bYh-OM-EH7"/>
                         <outlet property="userInfoView" destination="Dxy-tK-YWM" id="Sba-CK-3b3"/>
-                        <segue destination="dNs-f6-R1C" kind="show" identifier="ShowProfileFromComment" id="Xti-eI-rR0"/>
+                        <segue destination="r4D-Kr-jtj" kind="show" id="jWv-KH-vrH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lBZ-xZ-X84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1034.7826086956522" y="107.8125"/>
         </scene>
-        <!--Profile View Controller-->
-        <scene sceneID="2jE-HW-IEW">
+        <!--Profile Table View Controller-->
+        <scene sceneID="PON-Sp-HTN">
             <objects>
-                <viewController id="dNs-f6-R1C" customClass="ProfileViewController" customModule="Dostawemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="QqT-yi-Dx0">
+                <tableViewController id="r4D-Kr-jtj" customClass="ProfileTableViewController" customModule="Dostawemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fen-HF-DcV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="6N3-V3-IrU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8V-vG-egp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <connections>
+                            <outlet property="dataSource" destination="r4D-Kr-jtj" id="Bkh-xe-TlR"/>
+                            <outlet property="delegate" destination="r4D-Kr-jtj" id="6dR-N5-a5M"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwi-lV-dQ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1881" y="108"/>
+            <point key="canvasLocation" x="1834.7826086956522" y="107.8125"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EFb-Cb-MCT">
@@ -204,6 +207,7 @@
                             <constraint firstItem="Crs-GJ-HYJ" firstAttribute="centerY" secondItem="ghB-ig-Sjl" secondAttribute="centerY" id="Ymq-nK-ieP"/>
                             <constraint firstItem="Crs-GJ-HYJ" firstAttribute="centerX" secondItem="ghB-ig-Sjl" secondAttribute="centerX" id="mbw-Ix-qEC"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="kBn-nE-7mc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="900-cz-cWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -230,6 +234,7 @@
                             <constraint firstItem="8vv-p6-eed" firstAttribute="centerX" secondItem="OZB-6m-xOY" secondAttribute="centerX" id="TaW-T8-tv1"/>
                             <constraint firstItem="8vv-p6-eed" firstAttribute="centerY" secondItem="OZB-6m-xOY" secondAttribute="centerY" id="lLS-c5-Z4H"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="mcI-zR-2tC"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dUX-9S-Sbw" userLabel="First Responder" sceneMemberID="firstResponder"/>
