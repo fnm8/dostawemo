@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		101154969B76CBE7F58A5DD9 /* Pods_DostawemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94B473B698469464E791188 /* Pods_DostawemoTests.framework */; };
+		1A70952E22BA3B69002DBEFD /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70952D22BA3B69002DBEFD /* EditProfileTableViewController.swift */; };
+		1A70953122BA4799002DBEFD /* AddAddressTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A70953022BA4799002DBEFD /* AddAddressTableViewController.swift */; };
+		1A9BC9DA22B8E84900EDF35B /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BC9D922B8E84900EDF35B /* AuthRouter.swift */; };
+		1A9BC9DC22B8EAAA00EDF35B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BC9DB22B8EAAA00EDF35B /* ApiService.swift */; };
+		1A9BC9DE22B8EB2300EDF35B /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BC9DD22B8EB2300EDF35B /* Error.swift */; };
+		1A9BC9E022B8F3A600EDF35B /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9BC9DF22B8F3A600EDF35B /* Auth.swift */; };
 		4CED5F3ADAADE64E1096C7A2 /* Pods_Dostawemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CA644DD287F483AD93C4072 /* Pods_Dostawemo.framework */; };
 		79AD9D76E9C5FE47615DADE5 /* Pods_DostawemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962A6543813FE14821B6FD47 /* Pods_DostawemoUITests.framework */; };
 		E84B823422AA54240057EB4B /* ProductTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E84B823222AA54240057EB4B /* ProductTableViewController.swift */; };
@@ -32,8 +38,8 @@
 		E88ED9B622AFC47200F9F3BC /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88ED9B522AFC47200F9F3BC /* Basket.swift */; };
 		E8C32B9D22B2427600756B23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32B9C22B2427600756B23 /* User.swift */; };
 		E8C32B9F22B24CDB00756B23 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32B9E22B24CDB00756B23 /* ProfileTableViewController.swift */; };
-		E8C32BA322B262B200756B23 /* PhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32BA122B262B200756B23 /* PhotoTableViewCell.swift */; };
-		E8C32BA422B262B200756B23 /* PhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C32BA222B262B200756B23 /* PhotoTableViewCell.xib */; };
+		E8C32BA322B262B200756B23 /* AccountPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32BA122B262B200756B23 /* AccountPhotoTableViewCell.swift */; };
+		E8C32BA422B262B200756B23 /* AccountPhotoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C32BA222B262B200756B23 /* AccountPhotoTableViewCell.xib */; };
 		E8C32BA822B263BE00756B23 /* UserDetailSliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32BA622B263BE00756B23 /* UserDetailSliderTableViewCell.swift */; };
 		E8C32BA922B263BE00756B23 /* UserDetailSliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8C32BA722B263BE00756B23 /* UserDetailSliderTableViewCell.xib */; };
 		E8C32BAE22B2647100756B23 /* SecondDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C32BAD22B2647100756B23 /* SecondDetailView.swift */; };
@@ -89,6 +95,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A70952D22BA3B69002DBEFD /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
+		1A70953022BA4799002DBEFD /* AddAddressTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressTableViewController.swift; sourceTree = "<group>"; };
+		1A9BC9D922B8E84900EDF35B /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
+		1A9BC9DB22B8EAAA00EDF35B /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		1A9BC9DD22B8EB2300EDF35B /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		1A9BC9DF22B8F3A600EDF35B /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		2540563B17967FB06BF8C4E4 /* Pods-DostawemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoTests.release.xcconfig"; path = "Target Support Files/Pods-DostawemoTests/Pods-DostawemoTests.release.xcconfig"; sourceTree = "<group>"; };
 		32C0199B80860C415CF7E77A /* Pods-Dostawemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dostawemo.debug.xcconfig"; path = "Target Support Files/Pods-Dostawemo/Pods-Dostawemo.debug.xcconfig"; sourceTree = "<group>"; };
 		358F237C3F22C4CD79E665B1 /* Pods-DostawemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DostawemoUITests.debug.xcconfig"; path = "Target Support Files/Pods-DostawemoUITests/Pods-DostawemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -120,8 +132,8 @@
 		E88ED9B522AFC47200F9F3BC /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		E8C32B9C22B2427600756B23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E8C32B9E22B24CDB00756B23 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
-		E8C32BA122B262B200756B23 /* PhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoTableViewCell.swift; sourceTree = "<group>"; };
-		E8C32BA222B262B200756B23 /* PhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoTableViewCell.xib; sourceTree = "<group>"; };
+		E8C32BA122B262B200756B23 /* AccountPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		E8C32BA222B262B200756B23 /* AccountPhotoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountPhotoTableViewCell.xib; sourceTree = "<group>"; };
 		E8C32BA622B263BE00756B23 /* UserDetailSliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailSliderTableViewCell.swift; sourceTree = "<group>"; };
 		E8C32BA722B263BE00756B23 /* UserDetailSliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailSliderTableViewCell.xib; sourceTree = "<group>"; };
 		E8C32BAD22B2647100756B23 /* SecondDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondDetailView.swift; sourceTree = "<group>"; };
@@ -193,6 +205,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A70952922BA3116002DBEFD /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				1A70952D22BA3B69002DBEFD /* EditProfileTableViewController.swift */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		1A70952F22BA4780002DBEFD /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				1A70953022BA4799002DBEFD /* AddAddressTableViewController.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		35B54D7EAFA11C852B61377F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -259,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				E88ED9A222AFB50200F9F3BC /* GroupProductInfoSegment.swift */,
+				1A9BC9DD22B8EB2300EDF35B /* Error.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -284,8 +313,8 @@
 		E8C32BA022B261D200756B23 /* PhotoCell */ = {
 			isa = PBXGroup;
 			children = (
-				E8C32BA122B262B200756B23 /* PhotoTableViewCell.swift */,
-				E8C32BA222B262B200756B23 /* PhotoTableViewCell.xib */,
+				E8C32BA122B262B200756B23 /* AccountPhotoTableViewCell.swift */,
+				E8C32BA222B262B200756B23 /* AccountPhotoTableViewCell.xib */,
 			);
 			path = PhotoCell;
 			sourceTree = "<group>";
@@ -341,6 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				E8C32BBC22B3B2E300756B23 /* AuthService.swift */,
+				1A9BC9D922B8E84900EDF35B /* AuthRouter.swift */,
+				1A9BC9DB22B8EAAA00EDF35B /* ApiService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -376,9 +407,9 @@
 				E8EA296922A91545000DF441 /* Helper */,
 				E8EA294B22A7BF78000DF441 /* Model */,
 				E8EA293622A66877000DF441 /* Extension */,
+				E8EA292E22A663FA000DF441 /* Main */,
 				E8C32BB522B396D700756B23 /* Auth */,
 				E8EA293922A66984000DF441 /* Basket */,
-				E8EA292E22A663FA000DF441 /* Main */,
 				E8EA292C22A663DB000DF441 /* Search */,
 				E8EA292D22A663EA000DF441 /* Account */,
 				E8EA292B22A65C5C000DF441 /* Supporting Files */,
@@ -429,9 +460,11 @@
 		E8EA292D22A663EA000DF441 /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				1A70952F22BA4780002DBEFD /* New Group */,
 				E8EA295D22A90ACB000DF441 /* Account.storyboard */,
-				E8EA296422A913DB000DF441 /* Profile */,
 				E8EA295F22A90E58000DF441 /* Comments */,
+				E8EA296422A913DB000DF441 /* Profile */,
+				1A70952922BA3116002DBEFD /* EditProfile */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -492,6 +525,7 @@
 				E88ED9B522AFC47200F9F3BC /* Basket.swift */,
 				E8C32B9C22B2427600756B23 /* User.swift */,
 				E8C32BBE22B3B37300756B23 /* Result.swift */,
+				1A9BC9DF22B8F3A600EDF35B /* Auth.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -649,6 +683,7 @@
 				TargetAttributes = {
 					E8EA28F922A659D9000DF441 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 					};
 					E8EA290D22A659DA000DF441 = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -700,7 +735,7 @@
 				E88ED9B422AFBF8300F9F3BC /* BasketButtonTableViewCell.xib in Resources */,
 				E88ED99322AE558F00F9F3BC /* GoogleService-Info.plist in Resources */,
 				E88ED9A022AFB43B00F9F3BC /* GroupSegmentProductInfoTableViewCell.xib in Resources */,
-				E8C32BA422B262B200756B23 /* PhotoTableViewCell.xib in Resources */,
+				E8C32BA422B262B200756B23 /* AccountPhotoTableViewCell.xib in Resources */,
 				E8EA295722A7C53E000DF441 /* TopProductCollectionViewCell.xib in Resources */,
 				E8C32BA922B263BE00756B23 /* UserDetailSliderTableViewCell.xib in Resources */,
 				E8EA295E22A90ACB000DF441 /* Account.storyboard in Resources */,
@@ -755,11 +790,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Dostawemo/Pods-Dostawemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/RxAlamofire/RxAlamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
@@ -772,11 +811,15 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAlamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -847,11 +890,16 @@
 				E8C32BBD22B3B2E300756B23 /* AuthService.swift in Sources */,
 				E88ED99F22AFB43B00F9F3BC /* GroupSegmentProductInfoTableViewCell.swift in Sources */,
 				E8EA293522A6678D000DF441 /* SearchViewModel.swift in Sources */,
+				1A9BC9DC22B8EAAA00EDF35B /* ApiService.swift in Sources */,
 				E8EA296B22A91554000DF441 /* Config.swift in Sources */,
 				E8C32BA822B263BE00756B23 /* UserDetailSliderTableViewCell.swift in Sources */,
 				E8C32B9F22B24CDB00756B23 /* ProfileTableViewController.swift in Sources */,
 				E8C32BBF22B3B37300756B23 /* Result.swift in Sources */,
+				1A9BC9E022B8F3A600EDF35B /* Auth.swift in Sources */,
+				1A70953122BA4799002DBEFD /* AddAddressTableViewController.swift in Sources */,
 				E88ED99122AE521100F9F3BC /* UIImageView+Extension.swift in Sources */,
+				1A9BC9DE22B8EB2300EDF35B /* Error.swift in Sources */,
+				1A70952E22BA3B69002DBEFD /* EditProfileTableViewController.swift in Sources */,
 				E8EA293322A6677F000DF441 /* SearchViewController.swift in Sources */,
 				E8C32B9D22B2427600756B23 /* User.swift in Sources */,
 				E8EA293E22A66A20000DF441 /* BasketSceneTableViewController.swift in Sources */,
@@ -862,7 +910,7 @@
 				E84B823A22AA56AB0057EB4B /* ProductPreviewTableViewCell.swift in Sources */,
 				E8C32BAE22B2647100756B23 /* SecondDetailView.swift in Sources */,
 				E8EA293822A6688B000DF441 /* UIImage+Extension.swift in Sources */,
-				E8C32BA322B262B200756B23 /* PhotoTableViewCell.swift in Sources */,
+				E8C32BA322B262B200756B23 /* AccountPhotoTableViewCell.swift in Sources */,
 				E8C32BC122B3B42B00756B23 /* SignInViewModel.swift in Sources */,
 				E88ED9A322AFB50200F9F3BC /* GroupProductInfoSegment.swift in Sources */,
 				E84B824522AA64450057EB4B /* PriceTableViewCell.swift in Sources */,
@@ -875,6 +923,7 @@
 				E8EA296122A90E8C000DF441 /* CommentViewController.swift in Sources */,
 				E84B823F22AA5D9B0057EB4B /* ProductViewModel.swift in Sources */,
 				E8EA294D22A7BF89000DF441 /* Product.swift in Sources */,
+				1A9BC9DA22B8E84900EDF35B /* AuthRouter.swift in Sources */,
 				E88ED9B322AFBF8300F9F3BC /* BasketButtonTableViewCell.swift in Sources */,
 				E8EA296822A914DA000DF441 /* UILabel+Extension.swift in Sources */,
 				E8EA295922A7CA40000DF441 /* UICollectionViewCell+Extension.swift in Sources */,
@@ -1054,9 +1103,10 @@
 			baseConfigurationReference = 32C0199B80860C415CF7E77A /* Pods-Dostawemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6SMF8XRHEF;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Dostawemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1065,6 +1115,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.applabs.dostawemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1075,9 +1126,10 @@
 			baseConfigurationReference = E644248681CA2E53A09E27C9 /* Pods-Dostawemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6SMF8XRHEF;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Dostawemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

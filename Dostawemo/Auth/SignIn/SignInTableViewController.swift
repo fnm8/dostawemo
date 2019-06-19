@@ -43,6 +43,30 @@ class SignInTableViewController: UITableViewController {
         viewModel.state
             .drive(onNext: {[weak self] state in self?.showCodeContainer() })
             .disposed(by: disposeBag)
+        
+        // Verification Code
+        viewModel.verificationCode
+            .filter{$0 != nil}
+            .drive(onNext: {[weak self] code in self?.showVerifityCodeAlert(code: code!)})
+            .disposed(by: disposeBag)
+        
+//        codeTextField.rx.text.orEmpty
+//            .asDriver()
+//            .drive(onNext: {[weak self] code in
+//                if code.count == 6 { self?.codeTextField.isUserInteractionEnabled = false }
+//            }).disposed(by: disposeBag)
+    }
+    
+    private func showVerifityCodeAlert(code: Int){
+        codeTextField.text = "\(code)"
+        codeTextField.sendActions(for: .valueChanged)
+//        let alert = UIAlertController(
+//            title: "Проверочный код",
+//            message: "Никому не сообщайте проверочный код. Код: \(code)",
+//            preferredStyle: .alert
+//        )
+//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
     }
     
     private func configurateTextField(){

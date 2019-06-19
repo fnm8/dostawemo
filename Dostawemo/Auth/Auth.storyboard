@@ -25,7 +25,7 @@
                         <sections>
                             <tableViewSection id="9TI-gv-yQJ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="328" id="0HD-9y-12h">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="328" id="0HD-9y-12h">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="328"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0HD-9y-12h" id="Okd-H7-jQl">
@@ -44,7 +44,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYl-sR-MpC">
                                                     <rect key="frame" x="82" y="100" width="250" height="200"/>
                                                     <subviews>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+7 911 112-11-11" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udK-uQ-m9o" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="79111151897" placeholder="+7 911 112-11-11" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="udK-uQ-m9o" customClass="PhoneNumberTextField" customModule="PhoneNumberKit">
                                                             <rect key="frame" x="0.0" y="40" width="250" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="sCo-XB-AME"/>
@@ -111,7 +111,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="373" id="ESp-da-VTi">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="373" id="ESp-da-VTi">
                                         <rect key="frame" x="0.0" y="328" width="414" height="373"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ESp-da-VTi" id="9N6-fd-DXi">

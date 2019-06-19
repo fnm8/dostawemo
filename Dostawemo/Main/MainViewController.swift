@@ -19,7 +19,7 @@ class MainViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        if button == nil {setCenterButton()}
+        //if button == nil {setCenterButton()}
     }
     
     private func setCenterButton(){

@@ -20,14 +20,16 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var commentUserContainer: UIView!
     @IBOutlet weak var commentListContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    @IBOutlet weak var editBarButton: UIBarButtonItem!
     
     private let disposeBag = DisposeBag()
+    private var basket: UIBarButtonItem!
     private let visible: CGFloat = 1
     private let hide: CGFloat = 0
     private let listIndex = 0
     private let userIndex = 1
     private let profileSegue = "ShowProfileFromComment"
+    private let authSegue = "ShowAuthFromAccount"
+    private let basketSegue = "ShowBasketFromComment"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,8 @@ class CommentViewController: UIViewController {
         commentUserContainer.alpha = hide
         userImageView.layer.cornerRadius = userImageView.bounds.width / 2
         userImageView.clipsToBounds = true
+        
+        configurateBasketButton()
         
         // MARK:
         segmentControl.rx.value.asDriver()
@@ -52,7 +56,24 @@ class CommentViewController: UIViewController {
 
     }
     
+    private func configurateBasketButton(){
+        basket = UIBarButtonItem(image: UIImage.basket, style: .plain, target: nil, action: nil)
+        basket.rx.tap.asDriver()
+            .drive(onNext: {[weak self] in self?.showBasket()})
+            .disposed(by: disposeBag)
+        navigationItem.rightBarButtonItem = basket
+    }
+    
+    private func showBasket() {
+        performSegue(withIdentifier: basketSegue, sender: nil)
+    }
+
+    
     private func showProfile(){
+        if app.auth == nil {
+            performSegue(withIdentifier: authSegue, sender: nil)
+            return
+        }
         performSegue(withIdentifier: profileSegue, sender: nil)
     }
     

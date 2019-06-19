@@ -11,6 +11,8 @@ target 'Dostawemo' do
 	pod 'Firebase/Firestore'
 	pod 'RxSwift', '~> 5'
     	pod 'RxCocoa', '~> 5'
+	pod 'RxAlamofire'
+	pod 'RealmSwift'
 	pod 'Firebase/Auth'
 	pod 'PhoneNumberKit', '~> 2.6'
 

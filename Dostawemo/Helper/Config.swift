@@ -11,6 +11,8 @@ import UIKit
 
 class Config {
     
+    static let host = "https://us-central1-dostawemo-3c0a1.cloudfunctions.net"
+    
     static var appAttributeName: NSMutableAttributedString {
         let fullText = "DOSTAWEMO"
         let changeText = "WE"
