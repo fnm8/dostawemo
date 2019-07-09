@@ -11,16 +11,17 @@ import UIKit
 class FirstDetailView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var cityName: UILabel!
-    @IBOutlet weak var registerDate: UILabel!
+    @IBOutlet weak var secondName: UILabel!
+    @IBOutlet weak var firstName: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        commonInit()
     }
     
     private func commonInit(){

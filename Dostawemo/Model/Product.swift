@@ -8,39 +8,71 @@
 
 import Foundation
 import Firebase
+import RealmSwift
 
+@objcMembers
+class Product: Object {
+    
+    dynamic var id: String = ""
+    dynamic var price: Int = 0
+    dynamic var name: String = ""
+    dynamic var marketPrice: Int = 0
+    dynamic var primeCost: String = ""
+    dynamic var colors = List<String>()
+    dynamic var featured: Int = 0
+    dynamic var video: String = ""
+    dynamic var imagesPath = List<String>()
+    dynamic var sizes = List<String>()
+    dynamic var composition: String = ""
+    dynamic var desc: String = ""
+    dynamic var purchaseId: String = ""
+    dynamic var created: Date = Date()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+}
 
-class Product {
+class ProductSerialize {
     
-    var id: String
-    var price: Int?
-    var name: String
-    var marketPrice: Int?
-    var primeCost: String  // ??
-    var colors: [String] = []
-    var featured: Int   // ??
-    var video: String
-    var imagesPath: [String] = []
-    var sizes: [String] = []
-    var composition: String // ??
-    var desc: String
-    
-    
-    var imagesHash: [String: UIImage] = [:]
-    
-    init(data: QueryDocumentSnapshot) {
-        self.id = data.documentID
+    static func create(data: QueryDocumentSnapshot) -> Product{
+        let product = Product()
+        product.id = data.documentID
         let json = data.data()
-        self.price = json["price"] as? Int
-        self.name = json["name"] as? String ?? ""
-        self.marketPrice = json["marketPrice"] as? Int
-        self.primeCost = json["primeCost"] as? String ?? ""
-        self.colors = json["colors"] as? [String] ?? []
-        self.featured = json["featured"] as? Int ?? 0
-        self.video = json["video"] as? String ?? ""
-        self.imagesPath = json["images"] as? [String] ?? []
-        self.composition = json["composition"] as? String ?? ""
-        self.desc = json["desc"] as? String ?? ""
-        self.sizes = json["sizes"] as? [String] ?? []
+        print(json)
+        
+        product.price = json["price"] as? Int ?? 0
+        product.name = json["name"] as? String ?? ""
+        product.marketPrice = json["marketPrice"] as? Int ?? 0
+        product.primeCost = json["primeCost"] as? String ?? ""
+        let colors = json["colors"] as? [String] ?? []
+        
+        let colorsList = List<String>()
+        colorsList.append(objectsIn: colors)
+        product.colors = colorsList
+        
+        product.featured = json["featured"] as? Int ?? 0
+        product.video = json["video"] as? String ?? ""
+        
+        let images = json["images"] as? [String] ?? []
+        let imagesList = List<String>()
+        imagesList.append(objectsIn: images)
+        product.imagesPath = imagesList
+        
+        product.composition = json["composition"] as? String ?? ""
+        product.desc = json["desc"] as? String ?? ""
+        
+        let sizes = json["sizes"] as? [String] ?? []
+        let sizesList = List<String>()
+        sizesList.append(objectsIn: sizes)
+        product.sizes = sizesList
+        
+        if let timestamp = json["created"] as? Timestamp{
+            product.created = Date(timeIntervalSince1970: TimeInterval(timestamp.seconds))
+        }
+        
+        product.purchaseId = json["purchaseId"] as? String ?? ""
+        return product
     }
 }

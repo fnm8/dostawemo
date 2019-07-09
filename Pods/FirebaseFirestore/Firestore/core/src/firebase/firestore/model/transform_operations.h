@@ -28,6 +28,7 @@
 
 #include "Firestore/core/include/firebase/firestore/timestamp.h"
 #include "Firestore/core/src/firebase/firestore/model/field_value.h"
+#include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 
 namespace firebase {
 namespace firestore {
@@ -57,10 +58,11 @@ class TransformOperation {
 
   /**
    * Computes the local transform result against the provided `previousValue`,
-   * optionally using the provided localWriteTime.
+   * optionally using the provided local_write_time.
    */
   virtual FSTFieldValue* ApplyToLocalView(
-      FSTFieldValue* previousValue, FIRTimestamp* localWriteTime) const = 0;
+      FSTFieldValue* previousValue,
+      const Timestamp& local_write_time) const = 0;
 
   /**
    * Computes a final transform result after the transform has been acknowledged
@@ -92,10 +94,11 @@ class ServerTimestampTransform : public TransformOperation {
     return Type::ServerTimestamp;
   }
 
-  FSTFieldValue* ApplyToLocalView(FSTFieldValue* previousValue,
-                                  FIRTimestamp* localWriteTime) const override {
+  FSTFieldValue* ApplyToLocalView(
+      FSTFieldValue* previousValue,
+      const Timestamp& local_write_time) const override {
     return [FSTServerTimestampValue
-        serverTimestampValueWithLocalWriteTime:localWriteTime
+        serverTimestampValueWithLocalWriteTime:local_write_time
                                  previousValue:previousValue];
   }
 
@@ -148,7 +151,7 @@ class ArrayTransform : public TransformOperation {
 
   FSTFieldValue* ApplyToLocalView(
       FSTFieldValue* previousValue,
-      FIRTimestamp* /* localWriteTime */) const override {
+      const Timestamp& /* local_write_time */) const override {
     return Apply(previousValue);
   }
 
@@ -247,8 +250,9 @@ class ArrayTransform : public TransformOperation {
  */
 class NumericIncrementTransform : public TransformOperation {
  public:
-  explicit NumericIncrementTransform(FSTNumberValue* operand)
+  explicit NumericIncrementTransform(FSTFieldValue* operand)
       : operand_(operand) {
+    HARD_ASSERT(FieldValue::IsNumber(operand.type));
   }
 
   Type type() const override {
@@ -257,24 +261,20 @@ class NumericIncrementTransform : public TransformOperation {
 
   FSTFieldValue* ApplyToLocalView(
       FSTFieldValue* previousValue,
-      FIRTimestamp* /* localWriteTime */) const override {
+      const Timestamp& /* local_write_time */) const override {
     // Return an integer value only if the previous value and the operand is an
     // integer.
     if (previousValue.type == FieldValue::Type::Integer &&
         operand_.type == FieldValue::Type::Integer) {
-      int64_t sum = SafeIncrement(
-          (static_cast<FSTIntegerValue*>(previousValue)).internalValue,
-          (static_cast<FSTIntegerValue*>(operand_)).internalValue);
-      return [FSTIntegerValue integerValue:sum];
+      int64_t sum =
+          SafeIncrement(previousValue.integerValue, operand_.integerValue);
+      return FieldValue::FromInteger(sum).Wrap();
     } else if (previousValue.type == FieldValue::Type::Integer) {
-      double sum =
-          (static_cast<FSTIntegerValue*>(previousValue)).internalValue +
-          OperandAsDouble();
-      return [FSTDoubleValue doubleValue:sum];
+      double sum = previousValue.integerValue + OperandAsDouble();
+      return FieldValue::FromDouble(sum).Wrap();
     } else if (previousValue.type == FieldValue::Type::Double) {
-      double sum = (static_cast<FSTDoubleValue*>(previousValue)).internalValue +
-                   OperandAsDouble();
-      return [FSTDoubleValue doubleValue:sum];
+      double sum = previousValue.doubleValue + OperandAsDouble();
+      return FieldValue::FromDouble(sum).Wrap();
     } else {
       // If the existing value is not a number, use the value of the transform
       // as the new base value.
@@ -287,7 +287,7 @@ class NumericIncrementTransform : public TransformOperation {
     return transformResult;
   }
 
-  FSTNumberValue* operand() const {
+  FSTFieldValue* operand() const {
     return operand_;
   }
 
@@ -312,7 +312,7 @@ class NumericIncrementTransform : public TransformOperation {
   }
 
  private:
-  FSTNumberValue* operand_;
+  FSTFieldValue* operand_;
 
   /**
    * Implements integer addition. Overflows are resolved to LONG_MAX/LONG_MIN.
@@ -331,9 +331,9 @@ class NumericIncrementTransform : public TransformOperation {
 
   double OperandAsDouble() const {
     if (operand_.type == FieldValue::Type::Double) {
-      return (static_cast<FSTDoubleValue*>(operand_)).internalValue;
+      return operand_.doubleValue;
     } else if (operand_.type == FieldValue::Type::Integer) {
-      return (static_cast<FSTIntegerValue*>(operand_)).internalValue;
+      return operand_.integerValue;
     } else {
       HARD_FAIL("Expected 'operand' to be of FSTNumerValue type, but was %s",
                 NSStringFromClass([operand_ class]));

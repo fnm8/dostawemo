@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Down
 
 class ProductDescriptionTableViewCell: UITableViewCell {
 
@@ -14,9 +15,11 @@ class ProductDescriptionTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     func configurate(product: Product){
-        textView.text = product.desc
+        let down = Down(markdownString: product.desc)
+        textView.attributedText = try? down.toAttributedString()
     }
 }

@@ -21,6 +21,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="46a-Z4-AgD" kind="relationship" relationship="viewControllers" id="rM0-d4-hk2"/>
+                        <segue destination="oe5-o7-UcJ" kind="relationship" relationship="viewControllers" id="oeu-pt-gaO"/>
                         <segue destination="p0f-mG-4xt" kind="relationship" relationship="viewControllers" id="gDb-jY-TNp"/>
                     </connections>
                 </tabBarController>
@@ -57,6 +58,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q0b-uv-XKC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1349.2753623188407" y="689.73214285714278"/>
+        </scene>
+        <!--Dostawemo-->
+        <scene sceneID="W6a-Vp-CXk">
+            <objects>
+                <viewController id="oe5-o7-UcJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yxg-XB-Dck">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kzR-M7-APG">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <connections>
+                                    <segue destination="ffP-gJ-RRd" kind="embed" id="JCo-FH-JdU"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kzR-M7-APG" firstAttribute="top" secondItem="yxg-XB-Dck" secondAttribute="top" id="JgC-eR-MZz"/>
+                            <constraint firstItem="9Jg-7e-aGw" firstAttribute="bottom" secondItem="kzR-M7-APG" secondAttribute="bottom" id="NY9-OM-ZvN"/>
+                            <constraint firstItem="kzR-M7-APG" firstAttribute="leading" secondItem="9Jg-7e-aGw" secondAttribute="leading" id="X9m-g1-sQ1"/>
+                            <constraint firstItem="kzR-M7-APG" firstAttribute="trailing" secondItem="9Jg-7e-aGw" secondAttribute="trailing" id="eRb-ZT-fod"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Jg-7e-aGw"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Dostawemo" id="lhy-n5-cJZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IzC-OM-Zgl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-396" y="690"/>
         </scene>
         <!--Отзывы-->
         <scene sceneID="vGL-ai-TbH">
@@ -103,6 +134,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkO-5W-qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1349" y="1119"/>
+        </scene>
+        <!--Purchases-->
+        <scene sceneID="BCB-XL-bNn">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Purchases" id="ffP-gJ-RRd" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ekl-r7-7xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-397" y="1105"/>
         </scene>
     </scenes>
     <resources>

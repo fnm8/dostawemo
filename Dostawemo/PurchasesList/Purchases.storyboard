@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XG3-Vv-zjz">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Purchases Table View Controller-->
+        <scene sceneID="lfr-JM-8Ea">
+            <objects>
+                <tableViewController id="u3Y-xp-1gt" customClass="PurchasesTableViewController" customModule="Dostawemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="GUp-o1-G4s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="JeB-px-uoI">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2TQ-hQ-Cwi">
+                                    <rect key="frame" x="16" y="8" width="382" height="29"/>
+                                    <segments>
+                                        <segment title="100% состоится"/>
+                                        <segment title="Новые"/>
+                                        <segment title="Мои закупки"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="2TQ-hQ-Cwi" firstAttribute="centerY" secondItem="JeB-px-uoI" secondAttribute="centerY" id="kJQ-Y9-KSG"/>
+                                <constraint firstAttribute="trailing" secondItem="2TQ-hQ-Cwi" secondAttribute="trailing" constant="16" id="mjP-PL-K1b"/>
+                                <constraint firstItem="2TQ-hQ-Cwi" firstAttribute="leading" secondItem="JeB-px-uoI" secondAttribute="leading" constant="16" id="vEO-x9-HSs"/>
+                            </constraints>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="u3Y-xp-1gt" id="viO-T0-rIO"/>
+                            <outlet property="delegate" destination="u3Y-xp-1gt" id="hvm-wo-t7W"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="exb-6T-1oT"/>
+                    <connections>
+                        <outlet property="segmentControl" destination="2TQ-hQ-Cwi" id="XQg-r2-0Bg"/>
+                        <segue destination="WMy-ff-8Cs" kind="presentation" identifier="ShowPurchaseScene" id="dFJ-hN-E9o"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfc-Qk-I0q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="863.768115942029" y="63.616071428571423"/>
+        </scene>
+        <!--PurchaseScene-->
+        <scene sceneID="usl-ZT-36q">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PurchaseScene" id="WMy-ff-8Cs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mM5-MB-N91" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1407" y="64"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LTm-35-Jd6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XG3-Vv-zjz" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zWK-gk-z2s">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="u3Y-xp-1gt" kind="relationship" relationship="rootViewController" id="ZOt-Ep-7IF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3i7-gU-xup" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="64"/>
+        </scene>
+    </scenes>
+</document>

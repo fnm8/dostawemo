@@ -15,6 +15,10 @@ target 'Dostawemo' do
 	pod 'RealmSwift'
 	pod 'Firebase/Auth'
 	pod 'PhoneNumberKit', '~> 2.6'
+	pod "RxRealm"
+	pod 'RxDataSources', '~> 4.0'
+	pod 'Down'
+	pod 'AlamofireImage', '~> 3.5'
 
   target 'DostawemoTests' do
     inherit! :search_paths

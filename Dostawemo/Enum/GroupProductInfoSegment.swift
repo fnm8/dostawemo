@@ -11,4 +11,15 @@ import Foundation
 
 enum GroupProductInfoSegment {
     case info, comment, question
+    
+    var index: Int {
+        switch self {
+        case .info:
+            return 0
+        case .comment:
+            return 1
+        case .question:
+            return 2
+        }
+    }
 }

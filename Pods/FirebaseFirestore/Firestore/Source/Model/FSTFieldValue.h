@@ -26,7 +26,6 @@
 #include "Firestore/core/src/firebase/firestore/model/field_value_options.h"
 
 @class FIRTimestamp;
-@class FIRGeoPoint;
 
 namespace model = firebase::firestore::model;
 
@@ -94,44 +93,14 @@ typedef NS_ENUM(NSInteger, FSTTypeOrder) {
 /** Compares against another FSTFieldValue. */
 - (NSComparisonResult)compare:(FSTFieldValue *)other;
 
-@end
+/** Accesses this FSTFieldValue as an integer. */
+- (int64_t)integerValue;
 
-/**
- * A null value stored in Firestore. The |value| of a FSTNullValue is [NSNull null].
- */
-@interface FSTNullValue : FSTFieldValue <NSNull *>
-+ (instancetype)nullValue;
-@end
+- (bool)isNAN;
 
-/**
- * Base class inherited from by FSTIntegerValue and FSTDoubleValue. It implements proper number
- * comparisons between the two types.
- */
-@interface FSTNumberValue : FSTFieldValue <NSNumber *>
-@end
+/** Accesses this FSTFieldValue as an double. */
+- (double)doubleValue;
 
-/**
- * An integer value stored in Firestore.
- */
-@interface FSTIntegerValue : FSTNumberValue
-+ (instancetype)integerValue:(int64_t)value;
-- (int64_t)internalValue;
-@end
-
-/**
- * A double-precision floating point number stored in Firestore.
- */
-@interface FSTDoubleValue : FSTNumberValue
-+ (instancetype)doubleValue:(double)value;
-+ (instancetype)nanValue;
-- (double)internalValue;
-@end
-
-/**
- * A timestamp value stored in Firestore.
- */
-@interface FSTTimestampValue : FSTFieldValue <FIRTimestamp *>
-+ (instancetype)timestampValue:(FIRTimestamp *)value;
 @end
 
 /**
@@ -143,40 +112,27 @@ typedef NS_ENUM(NSInteger, FSTTypeOrder) {
  *   Therefore they do not need to be parsed or serialized.
  * - When evaluated locally (e.g. via FSTDocumentSnapshot data), they by default evaluate to NSNull.
  *   This behavior can be configured by passing custom FieldValueOptions to `valueWithOptions:`.
- * - They sort after all FSTTimestampValues. With respect to other FSTServerTimestampValues, they
+ * - They sort after all Timestamp values. With respect to other FSTServerTimestampValues, they
  *   sort by their localWriteTime.
  */
 @interface FSTServerTimestampValue : FSTFieldValue <id>
-+ (instancetype)serverTimestampValueWithLocalWriteTime:(FIRTimestamp *)localWriteTime
++ (instancetype)serverTimestampValueWithLocalWriteTime:(const firebase::Timestamp &)localWriteTime
                                          previousValue:(nullable FSTFieldValue *)previousValue;
 
-@property(nonatomic, strong, readonly) FIRTimestamp *localWriteTime;
+@property(nonatomic, assign, readonly) const firebase::Timestamp &localWriteTime;
 @property(nonatomic, strong, readonly, nullable) FSTFieldValue *previousValue;
 
-@end
-
-/**
- * A geo point value stored in Firestore.
- */
-@interface FSTGeoPointValue : FSTFieldValue <FIRGeoPoint *>
-+ (instancetype)geoPointValue:(FIRGeoPoint *)value;
-@end
-
-/**
- * A blob value stored in Firestore.
- */
-@interface FSTBlobValue : FSTFieldValue <NSData *>
-+ (instancetype)blobValue:(NSData *)value;
 @end
 
 /**
  * A reference value stored in Firestore.
  */
 @interface FSTReferenceValue : FSTFieldValue <FSTDocumentKey *>
-+ (instancetype)referenceValue:(FSTDocumentKey *)value
-                    databaseID:(const model::DatabaseId *)databaseID;
-// Does not own this DatabaseId.
-@property(nonatomic, assign, readonly) const model::DatabaseId *databaseID;
+
++ (instancetype)referenceValue:(FSTDocumentKey *)value databaseID:(model::DatabaseId)databaseID;
+
+@property(nonatomic, assign, readonly) const model::DatabaseId &databaseID;
+
 @end
 
 /**

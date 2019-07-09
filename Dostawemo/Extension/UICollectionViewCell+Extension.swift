@@ -12,6 +12,11 @@ import UIKit
 
 extension UICollectionViewCell {
     
-    //var reusId: String { return String(describing: self.description) }
-    //var nib: UINib = UINib(nibName: reusId, bundle: nil)
+    static var reuseId: String {
+        return String(describing: self)
+    }
+    
+    static var nib: UINib {
+        return UINib(nibName: String(describing: self), bundle: nil)
+    }
 }

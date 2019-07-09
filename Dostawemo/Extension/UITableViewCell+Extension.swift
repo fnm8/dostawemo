@@ -18,4 +18,12 @@ extension UITableViewCell {
     static var nib: UINib {
         return UINib(nibName: String(describing: self), bundle: nil)
     }
+    
+    func clearImageView(imageView: UIImageView){
+        DispatchQueue.main.async {
+            imageView.image = nil
+        }
+    }
+    
+    
 }

@@ -23,23 +23,33 @@
 #import "FIRTimestamp.h"
 
 #import "Firestore/Source/API/FIRGeoPoint+Internal.h"
+#import "Firestore/Source/API/FIRTimestamp+Internal.h"
+#import "Firestore/Source/API/converters.h"
 #import "Firestore/Source/Model/FSTDocumentKey.h"
 #import "Firestore/Source/Util/FSTClasses.h"
 
+#include "Firestore/core/include/firebase/firestore/timestamp.h"
 #include "Firestore/core/src/firebase/firestore/model/database_id.h"
 #include "Firestore/core/src/firebase/firestore/model/document_key.h"
 #include "Firestore/core/src/firebase/firestore/model/field_path.h"
+#include "Firestore/core/src/firebase/firestore/nanopb/nanopb_util.h"
+#include "Firestore/core/src/firebase/firestore/timestamp_internal.h"
 #include "Firestore/core/src/firebase/firestore/util/comparison.h"
 #include "Firestore/core/src/firebase/firestore/util/hard_assert.h"
 #include "Firestore/core/src/firebase/firestore/util/string_apple.h"
 
 namespace util = firebase::firestore::util;
+using firebase::Timestamp;
+using firebase::TimestampInternal;
+using firebase::firestore::api::MakeFIRGeoPoint;
+using firebase::firestore::api::MakeFIRTimestamp;
 using firebase::firestore::model::DatabaseId;
 using firebase::firestore::model::FieldMask;
 using firebase::firestore::model::FieldPath;
 using firebase::firestore::model::FieldValue;
 using firebase::firestore::model::FieldValueOptions;
 using firebase::firestore::model::ServerTimestampBehavior;
+using firebase::firestore::nanopb::MakeNSData;
 using firebase::firestore::util::Comparator;
 using firebase::firestore::util::CompareMixedNumber;
 using firebase::firestore::util::DoubleBitwiseEquals;
@@ -103,266 +113,34 @@ NS_ASSUME_NONNULL_BEGIN
   }
 }
 
-@end
-
-#pragma mark - FSTNullValue
-
-@implementation FSTNullValue
-
-+ (instancetype)nullValue {
-  static FSTNullValue *sharedInstance = nil;
-  static dispatch_once_t onceToken;
-
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[FSTNullValue alloc] init];
-  });
-  return sharedInstance;
+- (int64_t)integerValue {
+  return static_cast<FSTDelegateValue *>(self).internalValue.integer_value();
 }
 
-- (FieldValue::Type)type {
-  return FieldValue::Type::Null;
+- (bool)isNAN {
+  if (self.type != FieldValue::Type::Double) return false;
+  return static_cast<FSTDelegateValue *>(self).internalValue.is_nan();
 }
 
-- (FSTTypeOrder)typeOrder {
-  return FSTTypeOrderNull;
-}
-
-- (id)value {
-  return [NSNull null];
-}
-
-- (BOOL)isEqual:(id)other {
-  return [other isKindOfClass:[self class]];
-}
-
-- (NSUInteger)hash {
-  return 47;
-}
-
-- (NSComparisonResult)compare:(FSTFieldValue *)other {
-  if ([other isKindOfClass:[self class]]) {
-    return NSOrderedSame;
-  } else {
-    return [self defaultCompare:other];
-  }
+- (double)doubleValue {
+  return static_cast<FSTDelegateValue *>(self).internalValue.double_value();
 }
 
 @end
 
-#pragma mark - FSTNumberValue
-
-@implementation FSTNumberValue
-
-- (FSTTypeOrder)typeOrder {
-  return FSTTypeOrderNumber;
-}
-
-- (NSComparisonResult)compare:(FSTFieldValue *)other {
-  if (!FieldValue::IsNumber(other.type)) {
-    return [self defaultCompare:other];
-  } else {
-    if (self.type == FieldValue::Type::Double) {
-      double thisDouble = ((FSTDoubleValue *)self).internalValue;
-      if (other.type == FieldValue::Type::Double) {
-        return WrapCompare(thisDouble, ((FSTDoubleValue *)other).internalValue);
-      } else {
-        HARD_ASSERT(other.type == FieldValue::Type::Integer, "Unknown number value: %s", other);
-        auto result = CompareMixedNumber(thisDouble, ((FSTIntegerValue *)other).internalValue);
-        return static_cast<NSComparisonResult>(result);
-      }
-    } else {
-      int64_t thisInt = ((FSTIntegerValue *)self).internalValue;
-      if (other.type == FieldValue::Type::Integer) {
-        return WrapCompare(thisInt, ((FSTIntegerValue *)other).internalValue);
-      } else {
-        HARD_ASSERT(other.type == FieldValue::Type::Double, "Unknown number value: %s", other);
-        double otherDouble = ((FSTDoubleValue *)other).internalValue;
-        auto result = ReverseOrder(CompareMixedNumber(otherDouble, thisInt));
-        return static_cast<NSComparisonResult>(result);
-      }
-    }
-  }
-}
-
-@end
-
-#pragma mark - FSTIntegerValue
-
-@interface FSTIntegerValue ()
-@property(nonatomic, assign, readonly) int64_t internalValue;
-@end
-
-@implementation FSTIntegerValue
-
-+ (instancetype)integerValue:(int64_t)value {
-  return [[FSTIntegerValue alloc] initWithValue:value];
-}
-
-- (id)initWithValue:(int64_t)value {
-  self = [super init];
-  if (self) {
-    _internalValue = value;
-  }
-  return self;
-}
-
-- (id)value {
-  return @(self.internalValue);
-}
-
-- (FieldValue::Type)type {
-  return FieldValue::Type::Integer;
-}
-
-- (BOOL)isEqual:(id)other {
-  // NOTE: DoubleValue and LongValue instances may compare: the same, but that doesn't make them
-  // equal via isEqual:
-  return [other isKindOfClass:[FSTFieldValue class]] &&
-         ((FSTFieldValue *)other).type == FieldValue::Type::Integer &&
-         self.internalValue == ((FSTIntegerValue *)other).internalValue;
-}
-
-- (NSUInteger)hash {
-  return (((NSUInteger)self.internalValue) ^ (NSUInteger)(self.internalValue >> 32));
-}
-
-// NOTE: compare: is implemented in NumberValue.
-
-@end
-
-#pragma mark - FSTDoubleValue
-
-@interface FSTDoubleValue ()
-@property(nonatomic, assign, readonly) double internalValue;
-@end
-
-@implementation FSTDoubleValue
-
-+ (instancetype)doubleValue:(double)value {
-  // Normalize NaNs to match the behavior on the backend (which uses Double.doubletoLongBits()).
-  if (isnan(value)) {
-    return [FSTDoubleValue nanValue];
-  }
-  return [[FSTDoubleValue alloc] initWithValue:value];
-}
-
-+ (instancetype)nanValue {
-  static FSTDoubleValue *sharedInstance = nil;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedInstance = [[FSTDoubleValue alloc] initWithValue:NAN];
-  });
-  return sharedInstance;
-}
-
-- (id)initWithValue:(double)value {
-  self = [super init];
-  if (self) {
-    _internalValue = value;
-  }
-  return self;
-}
-
-- (id)value {
-  return @(self.internalValue);
-}
-
-- (FieldValue::Type)type {
-  return FieldValue::Type::Double;
-}
-
-- (BOOL)isEqual:(id)other {
-  // NOTE: DoubleValue and LongValue instances may compare: the same, but that doesn't make them
-  // equal via isEqual:
-
-  // NOTE: isEqual: should compare NaN equal to itself and -0.0 not equal to 0.0.
-
-  return [other isKindOfClass:[FSTFieldValue class]] &&
-         ((FSTFieldValue *)other).type == FieldValue::Type::Double &&
-         DoubleBitwiseEquals(self.internalValue, ((FSTDoubleValue *)other).internalValue);
-}
-
-- (NSUInteger)hash {
-  return DoubleBitwiseHash(self.internalValue);
-}
-
-// NOTE: compare: is implemented in NumberValue.
-
-@end
-
-#pragma mark - FSTTimestampValue
-
-@interface FSTTimestampValue ()
-@property(nonatomic, strong, readonly) FIRTimestamp *internalValue;
-@end
-
-@implementation FSTTimestampValue
-
-+ (instancetype)timestampValue:(FIRTimestamp *)value {
-  return [[FSTTimestampValue alloc] initWithValue:value];
-}
-
-- (id)initWithValue:(FIRTimestamp *)value {
-  self = [super init];
-  if (self) {
-    _internalValue = value;  // FIRTimestamp is immutable.
-  }
-  return self;
-}
-
-- (FieldValue::Type)type {
-  return FieldValue::Type::Timestamp;
-}
-
-- (FSTTypeOrder)typeOrder {
-  return FSTTypeOrderTimestamp;
-}
-
-- (id)value {
-  return self.internalValue;
-}
-
-- (id)valueWithOptions:(const FieldValueOptions &)options {
-  if (options.timestamps_in_snapshots_enabled()) {
-    return self.value;
-  } else {
-    return [self.value dateValue];
-  }
-}
-
-- (BOOL)isEqual:(id)other {
-  return [other isKindOfClass:[FSTFieldValue class]] &&
-         ((FSTFieldValue *)other).type == FieldValue::Type::Timestamp &&
-         [self.internalValue isEqual:((FSTTimestampValue *)other).internalValue];
-}
-
-- (NSUInteger)hash {
-  return [self.internalValue hash];
-}
-
-- (NSComparisonResult)compare:(FSTFieldValue *)other {
-  if (other.type == FieldValue::Type::Timestamp) {
-    return [self.internalValue compare:((FSTTimestampValue *)other).internalValue];
-  } else if (other.type == FieldValue::Type::ServerTimestamp) {
-    // Concrete timestamps come before server timestamps.
-    return NSOrderedAscending;
-  } else {
-    return [self defaultCompare:other];
-  }
-}
-
-@end
 #pragma mark - FSTServerTimestampValue
 
-@implementation FSTServerTimestampValue
+@implementation FSTServerTimestampValue {
+  Timestamp _localWriteTime;
+}
 
-+ (instancetype)serverTimestampValueWithLocalWriteTime:(FIRTimestamp *)localWriteTime
++ (instancetype)serverTimestampValueWithLocalWriteTime:(const Timestamp &)localWriteTime
                                          previousValue:(nullable FSTFieldValue *)previousValue {
   return [[FSTServerTimestampValue alloc] initWithLocalWriteTime:localWriteTime
                                                    previousValue:previousValue];
 }
 
-- (id)initWithLocalWriteTime:(FIRTimestamp *)localWriteTime
+- (id)initWithLocalWriteTime:(const Timestamp &)localWriteTime
                previousValue:(nullable FSTFieldValue *)previousValue {
   self = [super init];
   if (self) {
@@ -389,7 +167,7 @@ NS_ASSUME_NONNULL_BEGIN
     case ServerTimestampBehavior::kNone:
       return [NSNull null];
     case ServerTimestampBehavior::kEstimate:
-      return [[FSTTimestampValue timestampValue:self.localWriteTime] valueWithOptions:options];
+      return [FieldValue::FromTimestamp(self.localWriteTime).Wrap() valueWithOptions:options];
     case ServerTimestampBehavior::kPrevious:
       return self.previousValue ? [self.previousValue valueWithOptions:options] : [NSNull null];
     default:
@@ -400,143 +178,24 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isEqual:(id)other {
   return [other isKindOfClass:[FSTFieldValue class]] &&
          ((FSTFieldValue *)other).type == FieldValue::Type::ServerTimestamp &&
-         [self.localWriteTime isEqual:((FSTServerTimestampValue *)other).localWriteTime];
+         self.localWriteTime == ((FSTServerTimestampValue *)other).localWriteTime;
 }
 
 - (NSUInteger)hash {
-  return [self.localWriteTime hash];
+  return TimestampInternal::Hash(self.localWriteTime);
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"<ServerTimestamp localTime=%@>", self.localWriteTime];
+  return [NSString
+      stringWithFormat:@"<ServerTimestamp localTime=%s>", self.localWriteTime.ToString().c_str()];
 }
 
 - (NSComparisonResult)compare:(FSTFieldValue *)other {
   if (other.type == FieldValue::Type::ServerTimestamp) {
-    return [self.localWriteTime compare:((FSTServerTimestampValue *)other).localWriteTime];
+    return WrapCompare(self.localWriteTime, ((FSTServerTimestampValue *)other).localWriteTime);
   } else if (other.type == FieldValue::Type::Timestamp) {
     // Server timestamps come after all concrete timestamps.
     return NSOrderedDescending;
-  } else {
-    return [self defaultCompare:other];
-  }
-}
-
-@end
-
-#pragma mark - FSTGeoPointValue
-
-@interface FSTGeoPointValue ()
-@property(nonatomic, strong, readonly) FIRGeoPoint *internalValue;
-@end
-
-@implementation FSTGeoPointValue
-
-+ (instancetype)geoPointValue:(FIRGeoPoint *)value {
-  return [[FSTGeoPointValue alloc] initWithValue:value];
-}
-
-- (id)initWithValue:(FIRGeoPoint *)value {
-  self = [super init];
-  if (self) {
-    _internalValue = value;  // FIRGeoPoint is immutable.
-  }
-  return self;
-}
-
-- (FieldValue::Type)type {
-  return FieldValue::Type::GeoPoint;
-}
-
-- (FSTTypeOrder)typeOrder {
-  return FSTTypeOrderGeoPoint;
-}
-
-- (id)value {
-  return self.internalValue;
-}
-
-- (BOOL)isEqual:(id)other {
-  return [other isKindOfClass:[FSTFieldValue class]] &&
-         ((FSTFieldValue *)other).type == FieldValue::Type::GeoPoint &&
-         [self.internalValue isEqual:((FSTGeoPointValue *)other).internalValue];
-}
-
-- (NSUInteger)hash {
-  return [self.internalValue hash];
-}
-
-- (NSComparisonResult)compare:(FSTFieldValue *)other {
-  if (other.type == FieldValue::Type::GeoPoint) {
-    return [self.internalValue compare:((FSTGeoPointValue *)other).internalValue];
-  } else {
-    return [self defaultCompare:other];
-  }
-}
-
-@end
-#pragma mark - FSTBlobValue
-
-static NSComparisonResult CompareBytes(NSData *left, NSData *right) {
-  NSUInteger minLength = MIN(left.length, right.length);
-  int result = memcmp(left.bytes, right.bytes, minLength);
-  if (result < 0) {
-    return NSOrderedAscending;
-  } else if (result > 0) {
-    return NSOrderedDescending;
-  } else if (left.length < right.length) {
-    return NSOrderedAscending;
-  } else if (left.length > right.length) {
-    return NSOrderedDescending;
-  } else {
-    return NSOrderedSame;
-  }
-}
-
-@interface FSTBlobValue ()
-@property(nonatomic, copy, readonly) NSData *internalValue;
-@end
-
-// TODO(b/37267885): Add truncation support
-@implementation FSTBlobValue
-
-+ (instancetype)blobValue:(NSData *)value {
-  return [[FSTBlobValue alloc] initWithValue:value];
-}
-
-- (id)initWithValue:(NSData *)value {
-  self = [super init];
-  if (self) {
-    _internalValue = [value copy];
-  }
-  return self;
-}
-
-- (FieldValue::Type)type {
-  return FieldValue::Type::Blob;
-}
-
-- (FSTTypeOrder)typeOrder {
-  return FSTTypeOrderBlob;
-}
-
-- (id)value {
-  return self.internalValue;
-}
-
-- (BOOL)isEqual:(id)other {
-  return [other isKindOfClass:[FSTFieldValue class]] &&
-         ((FSTFieldValue *)other).type == FieldValue::Type::Blob &&
-         [self.internalValue isEqual:((FSTBlobValue *)other).internalValue];
-}
-
-- (NSUInteger)hash {
-  return [self.internalValue hash];
-}
-
-- (NSComparisonResult)compare:(FSTFieldValue *)other {
-  if (other.type == FieldValue::Type::Blob) {
-    return CompareBytes(self.internalValue, ((FSTBlobValue *)other).internalValue);
   } else {
     return [self defaultCompare:other];
   }
@@ -550,17 +209,19 @@ static NSComparisonResult CompareBytes(NSData *left, NSData *right) {
 @property(nonatomic, strong, readonly) FSTDocumentKey *key;
 @end
 
-@implementation FSTReferenceValue
-
-+ (instancetype)referenceValue:(FSTDocumentKey *)value databaseID:(const DatabaseId *)databaseID {
-  return [[FSTReferenceValue alloc] initWithValue:value databaseID:databaseID];
+@implementation FSTReferenceValue {
+  DatabaseId _databaseID;
 }
 
-- (id)initWithValue:(FSTDocumentKey *)value databaseID:(const DatabaseId *)databaseID {
++ (instancetype)referenceValue:(FSTDocumentKey *)value databaseID:(DatabaseId)databaseID {
+  return [[FSTReferenceValue alloc] initWithValue:value databaseID:std::move(databaseID)];
+}
+
+- (id)initWithValue:(FSTDocumentKey *)value databaseID:(DatabaseId)databaseID {
   self = [super init];
   if (self) {
     _key = value;
-    _databaseID = databaseID;
+    _databaseID = std::move(databaseID);
   }
   return self;
 }
@@ -587,11 +248,11 @@ static NSComparisonResult CompareBytes(NSData *left, NSData *right) {
   }
 
   FSTReferenceValue *otherRef = (FSTReferenceValue *)other;
-  return self.key.key == otherRef.key.key && *self.databaseID == *otherRef.databaseID;
+  return self.key.key == otherRef.key.key && self.databaseID == otherRef.databaseID;
 }
 
 - (NSUInteger)hash {
-  NSUInteger result = self.databaseID->Hash();
+  NSUInteger result = self.databaseID.Hash();
   result = 31 * result + [self.key hash];
   return result;
 }
@@ -599,12 +260,11 @@ static NSComparisonResult CompareBytes(NSData *left, NSData *right) {
 - (NSComparisonResult)compare:(FSTFieldValue *)other {
   if (other.type == FieldValue::Type::Reference) {
     FSTReferenceValue *ref = (FSTReferenceValue *)other;
-    NSComparisonResult cmp =
-        WrapCompare(self.databaseID->project_id(), ref.databaseID->project_id());
+    NSComparisonResult cmp = WrapCompare(self.databaseID.project_id(), ref.databaseID.project_id());
     if (cmp != NSOrderedSame) {
       return cmp;
     }
-    cmp = WrapCompare(self.databaseID->database_id(), ref.databaseID->database_id());
+    cmp = WrapCompare(self.databaseID.database_id(), ref.databaseID.database_id());
     return cmp != NSOrderedSame ? cmp : WrapCompare(self.key.key, ref.key.key);
   } else {
     return [self defaultCompare:other];
@@ -957,24 +617,47 @@ static const NSComparator StringComparator = ^NSComparisonResult(NSString *left,
 - (id)value {
   switch (self.internalValue.type()) {
     case FieldValue::Type::Null:
-      HARD_FAIL("TODO(rsgowman): implement");
+      return [NSNull null];
     case FieldValue::Type::Boolean:
       return self.internalValue.boolean_value() ? @YES : @NO;
     case FieldValue::Type::Integer:
+      return @(self.internalValue.integer_value());
     case FieldValue::Type::Double:
-    case FieldValue::Type::Timestamp:
+      return @(self.internalValue.double_value());
+    case FieldValue::Type::Timestamp: {
+      auto timestamp = self.internalValue.timestamp_value();
+      return [[FIRTimestamp alloc] initWithSeconds:timestamp.seconds()
+                                       nanoseconds:timestamp.nanoseconds()];
+    }
     case FieldValue::Type::ServerTimestamp:
       HARD_FAIL("TODO(rsgowman): implement");
     case FieldValue::Type::String:
       return util::WrapNSString(self.internalValue.string_value());
     case FieldValue::Type::Blob:
+      return MakeNSData(self.internalValue.blob_value());
     case FieldValue::Type::Reference:
+      HARD_FAIL("TODO(rsgowman): implement");
     case FieldValue::Type::GeoPoint:
+      return MakeFIRGeoPoint(self.internalValue.geo_point_value());
     case FieldValue::Type::Array:
     case FieldValue::Type::Object:
       HARD_FAIL("TODO(rsgowman): implement");
   }
   UNREACHABLE();
+}
+
+- (id)valueWithOptions:(const model::FieldValueOptions &)options {
+  switch (self.internalValue.type()) {
+    case FieldValue::Type::Timestamp:
+      if (options.timestamps_in_snapshots_enabled()) {
+        return [self value];
+      } else {
+        return [[self value] dateValue];
+      }
+
+    default:
+      return [self value];
+  }
 }
 
 - (NSComparisonResult)compare:(FSTFieldValue *)other {
@@ -986,8 +669,14 @@ static const NSComparator StringComparator = ^NSComparisonResult(NSString *left,
   // FSTDelegateValue handles (eg) booleans to ensure this case never occurs.
 
   if (FieldValue::Comparable(self.type, other.type)) {
-    HARD_ASSERT([other isKindOfClass:[FSTDelegateValue class]]);
-    return WrapCompare<FieldValue>(self.internalValue, ((FSTDelegateValue *)other).internalValue);
+    if ([other isKindOfClass:[FSTServerTimestampValue class]]) {
+      HARD_ASSERT(self.type == FieldValue::Type::Timestamp);
+      // Server timestamps come after all concrete timestamps.
+      return NSOrderedAscending;
+    } else {
+      HARD_ASSERT([other isKindOfClass:[FSTDelegateValue class]]);
+      return WrapCompare<FieldValue>(self.internalValue, ((FSTDelegateValue *)other).internalValue);
+    }
   } else {
     return [self defaultCompare:other];
   }

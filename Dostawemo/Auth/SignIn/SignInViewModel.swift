@@ -62,9 +62,9 @@ class SignInViewModel {
         do {
             
             let realm = try Realm()
-            let auths = realm.objects(Auth.self)
+            let auths = realm.objects(AuthCredentials.self)
             
-            let auth = Auth()
+            let auth = AuthCredentials()
             auth.token = authData.accessToken
             auth.refresh = authData.refreshToken
             

@@ -8,9 +8,10 @@
 
 import Foundation
 
+@objcMembers
 class User {
-    var name: String = "Mark"
-    var secondName: String = "Snow"
-    var city: String = "Fixburg"
-    var age: String = ""
+    dynamic var name: String = "Mark"
+    dynamic var secondName: String = "Snow"
+    dynamic var city: String = "Fixburg"
+    dynamic var age: String = ""
 }

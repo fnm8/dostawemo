@@ -16,12 +16,13 @@ class PriceTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
     }
 
     func configurate(product: Product){
         dump(product)
-        marketPriceLabel.text = product.marketPrice != nil ? String(product.marketPrice!).addRubPostfix() : ""
-        dostawemoPriceLabel.text = product.price != nil ? String(product.price!).addRubPostfix() : ""
+        marketPriceLabel.text = product.marketPrice != nil ? String(product.marketPrice).addRubPostfix() : ""
+        dostawemoPriceLabel.text = product.price != nil ? String(product.price).addRubPostfix() : ""
     }
     
 }

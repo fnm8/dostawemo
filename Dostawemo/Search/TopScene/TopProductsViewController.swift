@@ -82,7 +82,6 @@ extension TopProductsViewController: UICollectionViewDataSource, UICollectionVie
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
         return headerView
     }
-    
 }
 
 extension TopProductsViewController: UICollectionViewDelegateFlowLayout {
@@ -96,7 +95,7 @@ extension TopProductsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize{
-        return CGSize(width: collectionView.bounds.width, height: 60)
+        return CGSize(width: collectionView.bounds.width, height: 40)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

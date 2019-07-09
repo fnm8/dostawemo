@@ -11,16 +11,17 @@ import UIKit
 class SecondDetailView: UIView {
 
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var cityName: UILabel!
+    //@IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var registerDate: UILabel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        commonInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
+        commonInit()
     }
     
     private func commonInit(){
@@ -31,7 +32,7 @@ class SecondDetailView: UIView {
     }
     
     func configurate(){
-        
+        //cityName.text = app.user.city
     }
 
 }

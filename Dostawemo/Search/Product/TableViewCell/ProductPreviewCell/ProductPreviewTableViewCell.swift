@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ProductPreviewTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
@@ -39,33 +40,20 @@ class ProductPreviewTableViewCell: UITableViewCell, UIScrollViewDelegate {
         imageScrollView.showsHorizontalScrollIndicator = false
         imageScrollView.delegate = self
         
-        
         for (index, path) in product.imagesPath.enumerated(){
             let y: CGFloat = CGFloat(0)
-            let x: CGFloat = CGFloat(0) + imageScrollView.bounds.width * CGFloat(index)
+            let x: CGFloat = CGFloat(0) + (self.bounds.width - 40) * CGFloat(index)
             let frame = CGRect(
                 x: x, y: y,
                 width: imageScrollView.bounds.width,
                 height: imageScrollView.bounds.height
             )
-
             let imageView = UIImageView(frame: frame)
-            
-            if let image = product.imagesHash[path] {
-                setImage(imageView: imageView, image: image)
-            } else {
-                DispatchQueue.global().async {
-                    if let url = URL( string: path),
-                        let data = try? Data( contentsOf: url) {
-                        DispatchQueue.main.async {
-                            if let image = UIImage( data:data){
-                                self.setImage(imageView: imageView, image: image)
-                                product.imagesHash[path] = image
-                            }
-                        }
-                    }
-                }
+            imageView.contentMode = .scaleAspectFit
+            if let url = URL(string: path) {
+                imageView.af_setImage(withURL: url)
             }
+            imageScrollView.addSubview(imageView)
         }
     }
     
@@ -75,14 +63,6 @@ class ProductPreviewTableViewCell: UITableViewCell, UIScrollViewDelegate {
             return
         }
         pageControll.numberOfPages = product.imagesPath.count
-    }
-    
-    func setImage(imageView: UIImageView, image: UIImage){
-        DispatchQueue.main.async {
-            imageView.image = image
-            imageView.contentMode = .scaleAspectFit
-            self.imageScrollView.addSubview(imageView)
-        }
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {

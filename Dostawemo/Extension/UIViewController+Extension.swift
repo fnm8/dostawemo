@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxCocoa
+import RxSwift
 
 extension UIViewController {
     
@@ -16,6 +18,20 @@ extension UIViewController {
         let imageView = UIImageView()
         imageView.image = image
         navigationItem.titleView = imageView
+    }
+    
+    func configurateBackButton(){
+        let back = UIBarButtonItem(
+            image: UIImage(named: "back"),
+            style: .plain,
+            target: self,
+            action: #selector(backButtonTapped)
+        )
+        navigationItem.leftBarButtonItem = back
+    }
+    
+    @objc private func backButtonTapped(){
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

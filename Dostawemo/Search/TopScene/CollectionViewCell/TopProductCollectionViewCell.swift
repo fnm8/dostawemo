@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TopProductCollectionViewCell: UICollectionViewCell {
 
@@ -22,46 +23,21 @@ class TopProductCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         productImageView.imageCornerRadius()
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productImageView.af_cancelImageRequest()
+        productImageView.image = nil
+    }
 
     func configurate(product: Product){
         productImageView.image = nil
-        priceLabel.text = product.price == nil ? "" : String(product.price!).addRubPostfix()
-        marketPriceLabel.text = product.marketPrice == nil ? "" : String(product.marketPrice!).addRubPostfix()
+        priceLabel.text = String(product.price).addRubPostfix()
+        marketPriceLabel.text = String(product.marketPrice).addRubPostfix()
         nameProductLabel.text = product.name
         detailProductLabel.text = ""
-        DispatchQueue.main.async {
-            self.activity = UIActivityIndicatorView()
-            self.activity?.color = .red
-            self.activity!.frame = self.productImageView.bounds
-            self.activity!.startAnimating()
-            self.productImageView.addSubview(self.activity!)
-        }
-        setImage(product: product)
-    }
-    
-    private func setImage(product: Product){
-        if product.imagesPath.isEmpty{ return }
-        if let image = product.imagesHash[product.imagesPath.first!] {
-            DispatchQueue.main.async {
-                self.productImageView.image = image
-                self.activity?.removeFromSuperview()
-                self.activity = nil
-            }
-            return
-        }
-        if let url = URL( string: product.imagesPath.first!) {
-            DispatchQueue.global().async {
-                if let data = try? Data( contentsOf:url) {
-                    DispatchQueue.main.async {
-                        if let image = UIImage( data:data){
-                            self.productImageView.image = image
-                            product.imagesHash[product.imagesPath.first!] = image
-                            self.activity?.removeFromSuperview()
-                            self.activity = nil
-                        }
-                    }
-                }
-            }
+        if let path = product.imagesPath.first, let url = URL(string: path) {
+            productImageView.af_setImage(withURL: url)
         }
     }
 }

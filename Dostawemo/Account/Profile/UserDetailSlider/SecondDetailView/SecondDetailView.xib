@@ -12,7 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SecondDetailView" customModule="Dostawemo" customModuleProvider="target">
             <connections>
-                <outlet property="cityName" destination="LKs-E5-FAt" id="xpe-iK-cOq"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="BXC-Rb-DzW"/>
                 <outlet property="registerDate" destination="bd7-L0-r8z" id="7Jv-zl-Z14"/>
             </connections>
