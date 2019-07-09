@@ -55,10 +55,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 ////            print(error)
 ////        }
 
-        Auth.auth().signIn(withCustomToken: "yJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTU2MjU3NzMwOCwiZXhwIjoxNTYyNTgwOTA4LCJpc3MiOiJkb3N0YXdlbW8tM2MwYTFAYXBwc3BvdC5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiZG9zdGF3ZW1vLTNjMGExQGFwcHNwb3QuZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6ImQ5ZGJjNmU5LTIxNTgtNDdlNi1hMzFjLTk4ZTFkOTQzODAyNiJ9.D7wnmClGUODzNQbIBgi6eUx43n6QfJ7ZDGEZPINQeOd4ETMoNEgxV1ZNNhp_vGK3S6djZBKZvZDcv8_S5so1-nEBFKEVHoENOgHFfysLs2TzNo_64Sf2IPdvpMyLcurG-XhrjvxDwZRkjqMo2gmiSJNEms8JiMAbMbDYk6H0RbpjrORYdBEs2Og9WQFfumWVbhz_W-_Rja3lZa1OcHjaR6TVQExvt3a2Bsr7sRjCldK5ntzWQ6Mg2KcArDgATexYcZzDu9p5lt24y2TFCJlkLbbE6lbt5VLtjEqSXT1pZWXqiwpwcE58fUFw2WuTPU4bwj3gGvPd-Vw9zQMPDXIMOQ") { (user, error) in
-            dump(user?.user.uid)
-            dump(error)
-        }
+//        Auth.auth().signIn(withCustomToken: "yJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwczovL2lkZW50aXR5dG9vbGtpdC5nb29nbGVhcGlzLmNvbS9nb29nbGUuaWRlbnRpdHkuaWRlbnRpdHl0b29sa2l0LnYxLklkZW50aXR5VG9vbGtpdCIsImlhdCI6MTU2MjU3NzMwOCwiZXhwIjoxNTYyNTgwOTA4LCJpc3MiOiJkb3N0YXdlbW8tM2MwYTFAYXBwc3BvdC5nc2VydmljZWFjY291bnQuY29tIiwic3ViIjoiZG9zdGF3ZW1vLTNjMGExQGFwcHNwb3QuZ3NlcnZpY2VhY2NvdW50LmNvbSIsInVpZCI6ImQ5ZGJjNmU5LTIxNTgtNDdlNi1hMzFjLTk4ZTFkOTQzODAyNiJ9.D7wnmClGUODzNQbIBgi6eUx43n6QfJ7ZDGEZPINQeOd4ETMoNEgxV1ZNNhp_vGK3S6djZBKZvZDcv8_S5so1-nEBFKEVHoENOgHFfysLs2TzNo_64Sf2IPdvpMyLcurG-XhrjvxDwZRkjqMo2gmiSJNEms8JiMAbMbDYk6H0RbpjrORYdBEs2Og9WQFfumWVbhz_W-_Rja3lZa1OcHjaR6TVQExvt3a2Bsr7sRjCldK5ntzWQ6Mg2KcArDgATexYcZzDu9p5lt24y2TFCJlkLbbE6lbt5VLtjEqSXT1pZWXqiwpwcE58fUFw2WuTPU4bwj3gGvPd-Vw9zQMPDXIMOQ") { (user, error) in
+//            dump(user?.user.uid)
+//            dump(error)
+//        }
         
 
         

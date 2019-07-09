@@ -145,7 +145,15 @@ extension BasketSceneTableViewController {
             withIdentifier: CreateOrderTableViewCell.reuseId,
             for: ip) as! CreateOrderTableViewCell
         cell.selectionStyle = .none
+        cell.confirmOrder = {[weak self] in self?.showOrder(by: ip) }
         return cell
+    }
+    
+    private func showOrder(by ip: IndexPath){
+        let section = viewModel.items.value[ip.section]
+        let ordervc = OrderTableViewController(nibName: nil, bundle: nil)
+        ordervc.purchaseId = section.purnaseId
+        self.navigationController?.pushViewController(ordervc, animated: true)
     }
 }
 

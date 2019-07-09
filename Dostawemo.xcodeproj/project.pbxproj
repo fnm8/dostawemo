@@ -10,6 +10,8 @@
 		101154969B76CBE7F58A5DD9 /* Pods_DostawemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D94B473B698469464E791188 /* Pods_DostawemoTests.framework */; };
 		1A050B0622CCAAD200AC37E7 /* BasketRightDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A050B0422CCAAD200AC37E7 /* BasketRightDetailTableViewCell.swift */; };
 		1A050B0722CCAAD200AC37E7 /* BasketRightDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A050B0522CCAAD200AC37E7 /* BasketRightDetailTableViewCell.xib */; };
+		1A15B1E322D4974600D30C55 /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15B1E222D4974600D30C55 /* OrderTableViewController.swift */; };
+		1A15B1E522D4975A00D30C55 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A15B1E422D4975A00D30C55 /* OrderViewModel.swift */; };
 		1A3BC14422CCC01700BF15B9 /* SetProductAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3BC14222CCC01700BF15B9 /* SetProductAttributeViewController.swift */; };
 		1A3BC14522CCC01700BF15B9 /* SetProductAttributeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A3BC14322CCC01700BF15B9 /* SetProductAttributeViewController.xib */; };
 		1A66217522D489E800F5506B /* OrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A66217422D489E800F5506B /* OrderRouter.swift */; };
@@ -172,6 +174,8 @@
 /* Begin PBXFileReference section */
 		1A050B0422CCAAD200AC37E7 /* BasketRightDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRightDetailTableViewCell.swift; sourceTree = "<group>"; };
 		1A050B0522CCAAD200AC37E7 /* BasketRightDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasketRightDetailTableViewCell.xib; sourceTree = "<group>"; };
+		1A15B1E222D4974600D30C55 /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
+		1A15B1E422D4975A00D30C55 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		1A3BC14222CCC01700BF15B9 /* SetProductAttributeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProductAttributeViewController.swift; sourceTree = "<group>"; };
 		1A3BC14322CCC01700BF15B9 /* SetProductAttributeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetProductAttributeViewController.xib; sourceTree = "<group>"; };
 		1A66217422D489E800F5506B /* OrderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRouter.swift; sourceTree = "<group>"; };
@@ -371,6 +375,15 @@
 			children = (
 				1ADBC2B222D4891B007C532A /* OrderService.swift */,
 				1A66217422D489E800F5506B /* OrderRouter.swift */,
+			);
+			path = Order;
+			sourceTree = "<group>";
+		};
+		1A66217622D4969200F5506B /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				1A15B1E222D4974600D30C55 /* OrderTableViewController.swift */,
+				1A15B1E422D4975A00D30C55 /* OrderViewModel.swift */,
 			);
 			path = Order;
 			sourceTree = "<group>";
@@ -995,6 +1008,7 @@
 			children = (
 				E8EA293A22A669D9000DF441 /* Basket.storyboard */,
 				E8EA293C22A669FF000DF441 /* BasketScene */,
+				1A66217622D4969200F5506B /* Order */,
 			);
 			path = Basket;
 			sourceTree = "<group>";
@@ -1499,6 +1513,7 @@
 				E88ED9A322AFB50200F9F3BC /* GroupProductInfoSegment.swift in Sources */,
 				E84B824522AA64450057EB4B /* PriceTableViewCell.swift in Sources */,
 				1A91746C22C02BE7007B63F0 /* PaymentMethodTableViewCell.swift in Sources */,
+				1A15B1E322D4974600D30C55 /* OrderTableViewController.swift in Sources */,
 				E8C32BB222B2676900756B23 /* FirstDetailView.swift in Sources */,
 				E88ED98F22AE4E2500F9F3BC /* String+Extension.swift in Sources */,
 				1A91744F22BFE7DB007B63F0 /* PurchaseViewModel.swift in Sources */,
@@ -1516,6 +1531,7 @@
 				E8EA295922A7CA40000DF441 /* UICollectionViewCell+Extension.swift in Sources */,
 				1ADBC2B322D4891B007C532A /* OrderService.swift in Sources */,
 				E8EA295622A7C53E000DF441 /* TopProductCollectionViewCell.swift in Sources */,
+				1A15B1E522D4975A00D30C55 /* OrderViewModel.swift in Sources */,
 				1A91749622C210EB007B63F0 /* PurchaseCollectionViewController.swift in Sources */,
 				1A91745422C00EB7007B63F0 /* PNameTableViewCell.swift in Sources */,
 			);
