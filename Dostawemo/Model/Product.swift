@@ -14,9 +14,9 @@ import RealmSwift
 class Product: Object {
     
     dynamic var id: String = ""
-    dynamic var price: Int = 0
+    dynamic var price: Double = 0.0
     dynamic var name: String = ""
-    dynamic var marketPrice: Int = 0
+    dynamic var marketPrice: Double = 0.0
     dynamic var primeCost: String = ""
     dynamic var colors = List<String>()
     dynamic var featured: Int = 0
@@ -40,11 +40,11 @@ class ProductSerialize {
         let product = Product()
         product.id = data.documentID
         let json = data.data()
-        print(json)
+        //print(json)
         
-        product.price = json["price"] as? Int ?? 0
+        product.price = json["price"] as? Double ?? 0.0
         product.name = json["name"] as? String ?? ""
-        product.marketPrice = json["marketPrice"] as? Int ?? 0
+        product.marketPrice = json["marketPrice"] as? Double ?? 0.0
         product.primeCost = json["primeCost"] as? String ?? ""
         let colors = json["colors"] as? [String] ?? []
         

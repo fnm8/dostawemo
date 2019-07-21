@@ -20,9 +20,9 @@ class PurchaseCollectionViewController: UICollectionViewController {
     // section
     private let titleSection = 0
     private let conditionRow = 0
-    private let filterRow = 1
-    private let imageRow = 2
-    private let infoRow = 3
+    //private let filterRow = 1
+    private let imageRow = 1
+    private let infoRow = 2
     
     private let productSection = 1
     
@@ -102,7 +102,7 @@ extension PurchaseCollectionViewController {
         if viewModel.purchase.value == nil {
             return 0
         }
-        return section == titleSection ? 4 : viewModel.products.value.count
+        return section == titleSection ? 3 : viewModel.products.value.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,14 +116,14 @@ extension PurchaseCollectionViewController {
                 return cell
             }
             
-            if indexPath.row == filterRow {
-                let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: FilterCollectionViewCell.reuseId,
-                    for: indexPath
-                ) as! FilterCollectionViewCell
-                cell.configurate()
-                return cell
-            }
+//            if indexPath.row == filterRow {
+//                let cell = collectionView.dequeueReusableCell(
+//                    withReuseIdentifier: FilterCollectionViewCell.reuseId,
+//                    for: indexPath
+//                ) as! FilterCollectionViewCell
+//                cell.configurate()
+//                return cell
+//            }
             if indexPath.row == imageRow {
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: PurchaseImageCollectionViewCell.reuseId,
@@ -175,7 +175,7 @@ extension PurchaseCollectionViewController: UICollectionViewDelegateFlowLayout {
         case titleSection:
             switch indexPath.row{
                 case conditionRow:  return conditionCellSize()
-                case filterRow:     return filterCellSize()
+               // case filterRow:     return filterCellSize()
                 case imageRow:      return imageCellSize()
                 case infoRow:       return infoSize()
                 default:            return CGSize()

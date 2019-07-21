@@ -12,4 +12,5 @@ import Foundation
 enum LError: Error {
     case serialize(_ message: String)
     case db(_ message: String)
+    case app(_ message: String)
 }

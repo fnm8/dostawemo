@@ -12,6 +12,7 @@ import Realm
 
 @objcMembers
 class AuthCredentials: Object {
+    dynamic var custom: String = ""
     dynamic var token: String = ""
     dynamic var refresh: String = ""
     

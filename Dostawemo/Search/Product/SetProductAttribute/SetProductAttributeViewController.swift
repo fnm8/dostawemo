@@ -117,7 +117,6 @@ extension SetProductAttributeViewController: UITableViewDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(
                 withIdentifier: AttributeScrolableTableViewCell.reuseId, for: indexPath
             ) as! AttributeScrolableTableViewCell
-        
         if indexPath.row == 0 && !product.sizes.isEmpty {
             cell.configurate(dataSource: Array(product.sizes), selected: options.size)
             cell.selectedItem = {[weak self] value in self?.options.size = value }

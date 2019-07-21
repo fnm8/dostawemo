@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import SimpleImageViewer
 
 class ProductTableViewController: UITableViewController {
     
@@ -27,8 +28,6 @@ class ProductTableViewController: UITableViewController {
     private let aboutSection = 4
 
     private let addBasketButtonTitle = "Добавить в корзину"
-    
-    
     
     var viewModel: ProductViewModel!
     var state: GroupProductInfoSegment = .info
@@ -91,8 +90,6 @@ class ProductTableViewController: UITableViewController {
             AttributeScrolableTableViewCell.nib,
             forCellReuseIdentifier: AttributeScrolableTableViewCell.reuseId
         )
-        
-        
     }
     
     private func configurateBasketButton(){
@@ -107,6 +104,10 @@ class ProductTableViewController: UITableViewController {
     
     private func showBasket(){
         BasketSceneTableViewController.show(on: self)
+    }
+    
+    deinit {
+        print("Product deinit")
     }
 }
 
@@ -135,6 +136,7 @@ extension ProductTableViewController {
                 
             case nameRow:
                 let cell = UITableViewCell()
+                cell.selectionStyle = .none
                 cell.textLabel?.text = viewModel.product.name
                 cell.textLabel?.textAlignment = .center
                 cell.textLabel?.numberOfLines = 0
@@ -181,8 +183,17 @@ extension ProductTableViewController {
             for: ip
             ) as! ProductImagesTableViewCell
         cell.configurate(product: viewModel.product)
-        cell.backgroundColor = .yellow
+        cell.showImage = {[weak self] image in self?.showImage(image: image)}
         return cell
+    }
+    
+    private func showImage(image: UIImageView){
+        let configuration = ImageViewerConfiguration { config in
+            config.imageView = image
+        }
+        
+        let imageViewerController = ImageViewerController(configuration: configuration)
+        present(imageViewerController, animated: true)
     }
     
     private func sizesAttributeCell(ip: IndexPath) -> AttributeScrolableTableViewCell {
@@ -254,11 +265,12 @@ extension ProductTableViewController {
     
     private func reloadAbout(){
         DispatchQueue.main.async {
+            UIView.setAnimationsEnabled(false)
             self.tableView.beginUpdates()
             let set = IndexSet(integer: self.aboutSection)
-            self.tableView.reloadSections(set, with: .fade)
-            //self.tableView.reloadSections([self.aboutSection], animationStyle: .none)
+            self.tableView.reloadSections(set, with: .none)
             self.tableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
         }
     }
     
@@ -366,4 +378,5 @@ extension ProductTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dump(indexPath)
     }
+    
 }

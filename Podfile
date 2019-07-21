@@ -19,6 +19,7 @@ target 'Dostawemo' do
 	pod 'RxDataSources', '~> 4.0'
 	pod 'Down'
 	pod 'AlamofireImage', '~> 3.5'
+	pod 'SimpleImageViewer', '~> 1.1.1'
 
   target 'DostawemoTests' do
     inherit! :search_paths

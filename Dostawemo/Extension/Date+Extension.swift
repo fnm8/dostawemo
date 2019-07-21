@@ -14,6 +14,14 @@ extension Date {
     func dateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd LLLL yyy"
-        return dateFormatter.string(from: self) + " года"
+        return dateFormatter.string(from: self)
+    }
+    
+    func yearOld() -> Int {
+        let calendar = Calendar.current        
+        let date1 = calendar.startOfDay(for: self)
+        let date2 = calendar.startOfDay(for: Date())
+        let components = calendar.dateComponents([.year], from: date1, to: date2)
+        return components.year!
     }
 }

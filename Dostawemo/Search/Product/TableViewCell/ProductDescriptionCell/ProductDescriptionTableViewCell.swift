@@ -19,7 +19,7 @@ class ProductDescriptionTableViewCell: UITableViewCell {
     }
 
     func configurate(product: Product){
-        let down = Down(markdownString: product.desc)
+        let down = Down(markdownString: product.desc.carry())
         textView.attributedText = try? down.toAttributedString()
     }
 }

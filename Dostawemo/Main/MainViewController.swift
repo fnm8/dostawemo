@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UITabBarController {
+class MainTabViewController: UITabBarController {
     
     var button: UIButton?
 

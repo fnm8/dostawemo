@@ -45,4 +45,9 @@ extension UITableView {
         cell.textLabel?.numberOfLines = 0
         return cell
     }
+    
+    func registerCell(identifier: String){
+        let nib = UINib(nibName: identifier, bundle: nil)
+        self.register(nib, forCellReuseIdentifier: identifier)
+    }
 }

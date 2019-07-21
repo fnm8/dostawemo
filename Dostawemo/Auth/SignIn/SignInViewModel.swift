@@ -11,70 +11,89 @@ import RxSwift
 import RxCocoa
 import Realm
 import RealmSwift
+import Firebase
 
 class SignInViewModel {
     
-    let state: Driver<SignInState>
-    let verificationCode: Driver<Int?>
+    let successSendCode = PublishSubject<Int>()
+    let successSignIn = PublishSubject<()>()
     
-    init(
-        phoneNumber:        Driver<String>,
-        sendPhoneAction:    Signal<()>,
-        codeVerification:Driver<String>
-    )
-    {
-        
-        let getCode = sendPhoneAction
-            .withLatestFrom(phoneNumber)
-            .asObservable()
+    
+    let phone = PublishSubject<String>()
+    let sendCode = PublishSubject<()>()
+    let code = PublishSubject<String>()
+    let signIn = PublishSubject<()>()
+    
+    private let disposeBag = DisposeBag()
+    
+    init(){
+        cSendCode()
+        cSignIn()
+    }
+    
+    private func cSendCode(){
+        let sendCodeResult = sendCode
+            .withLatestFrom(phone)
             .flatMapFirst{AuthService.getVerificationCode(phone: $0)}
             .share()
+            .debug()
         
-        state = getCode
+        sendCodeResult
             .filter{$0.value != nil}
-            .map{ _ in return .code}
-            .asDriver(onErrorJustReturn: .code)
+            .map{$0.value!}
+            .subscribe(onNext: {[weak self] code in self?.successSendCode.onNext(code)})
+            .disposed(by: disposeBag)
         
-        verificationCode = getCode
-            .filter{$0.value != nil}
-            .map{$0.value}
-            .asDriver(onErrorJustReturn: nil)
-        
-        let registerResult = codeVerification
-            .filter{$0.count >= 6}
-            .withLatestFrom(phoneNumber){ return [ "phoneNumber": $01, "verificationCode": $0 ] }
-            .asObservable()
-            .do(onNext: {print($0)})
-            .flatMapFirst{AuthService.register(params: $0)}
-            .share()
-        
-        registerResult
-            .filter{$0.value != nil}
-            .map{SignInViewModel.setAuth(authData: $0.value!)}
-            .subscribe()
-        
-        //MARK: - Error
-        let getCodeError = getCode.filter{$0.error != nil}.map{$0.error!}
-        let registerError = registerResult.filter{$0.error != nil}.map{$0.error!}
+        sendCodeResult
+            .filter{$0.error != nil}
+            .map{$0.error!}
+            .subscribe(onNext: {print($0.localizedDescription)})
+            .disposed(by: disposeBag)
     }
     
-    private static func setAuth(authData: (accessToken: String, refreshToken: String)) -> Result<()> {
+    private func cSignIn(){
+        
+        let params = Observable.combineLatest(phone, code){phone, code -> [String: Any] in
+            return [
+                "phoneNumber": phone,
+                "verificationCode": code
+            ]
+        }
+        
+        let signInResult = signIn
+            .withLatestFrom(params)
+            .flatMapFirst{AuthService.register(params: $0)}
+            .share()
+            .debug()
+        
+        signInResult
+            .filter{$0.value != nil}
+            .map{$0.value!}
+            .subscribe(onNext: {[weak self] auth in self?.saveAuthCredentials(auth: auth) })
+            .disposed(by: disposeBag)
+        
+        signInResult
+            .filter{$0.error != nil}
+            .map{$0.error!}
+            .subscribe(onNext: {print($0.localizedDescription)})
+            .disposed(by: disposeBag)
+    }
+    
+    private func saveAuthCredentials(auth: (accessToken: String, refreshToken: String, customToken: String)){
         do {
-            
             let realm = try Realm()
-            let auths = realm.objects(AuthCredentials.self)
-            
-            let auth = AuthCredentials()
-            auth.token = authData.accessToken
-            auth.refresh = authData.refreshToken
-            
+            let authCredentials = AuthCredentials()
+            authCredentials.custom = auth.customToken
+            authCredentials.token = auth.accessToken
+            authCredentials.refresh = auth.refreshToken
             try realm.write {
-                if auths.count == 0 { realm.delete(auths) }
-                realm.add(auth)
+                realm.add(authCredentials)
             }
-            return .success(())
-        } catch {
-            return .failure(LError.db("SignInViewModel setAuth"))
+            successSignIn.onNext(())
+        } catch let e {
+            print(e.localizedDescription)
         }
     }
+    
+   
 }

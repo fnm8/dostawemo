@@ -21,6 +21,7 @@ class CountProductTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         cStepper()
     }
     

@@ -20,5 +20,4 @@ extension UIColor {
         }
         return .green
     }
-    
 }

@@ -145,6 +145,7 @@ PODS:
   - RxRelay (5.0.0):
     - RxSwift (~> 5)
   - RxSwift (5.0.0)
+  - SimpleImageViewer (1.1.1)
 
 DEPENDENCIES:
   - AlamofireImage (~> 3.5)
@@ -160,6 +161,7 @@ DEPENDENCIES:
   - RxDataSources (~> 4.0)
   - RxRealm
   - RxSwift (~> 5)
+  - SimpleImageViewer (~> 1.1.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -193,6 +195,7 @@ SPEC REPOS:
     - RxRealm
     - RxRelay
     - RxSwift
+    - SimpleImageViewer
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
@@ -225,7 +228,8 @@ SPEC CHECKSUMS:
   RxRealm: 1e81dcfca1fb50c3e9b3e1f8102bc875c5156a2e
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  SimpleImageViewer: 34c3a2cde2d9ac022146772cefc27fca14b0c8b1
 
-PODFILE CHECKSUM: 6629eb7f3f8cd850bec0ff5d68a0144149eb3225
+PODFILE CHECKSUM: f1f6db4c9f0daa62c79a8bc93a71e344ed79a6a2
 
 COCOAPODS: 1.6.0

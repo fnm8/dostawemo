@@ -60,10 +60,9 @@ extension SectionPurchases: SectionModelType {
 
 class PurchasesSerialize{
     
-    static func parse(id: String, data: [String: Any]) -> Purchases {
-        
+    static func create(id: String, data: [String: Any]) -> Purchases {
         let json = data
-        print(json)
+        //print(json)
         let purchases = Purchases()
         purchases.id = id
         purchases.prefix = json["prefix"] as? String ?? ""

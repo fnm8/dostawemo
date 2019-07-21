@@ -20,24 +20,24 @@ extension UIImage {
     
     static let frameRed = UIImage(named: "Frame")?.withRenderingMode(.alwaysTemplate)
     
-    static func setImage(on imageView: UIImageView, with imagePath: String){
-        dump(imagePath)
-        DispatchQueue.main.async {
-            if let image = app.imagesHash[imagePath] {
-                imageView.image = image
-                return
-            } else {
-                if let url = URL(string: imagePath){
-                    DispatchQueue.global().async {
-                        if let data = try? Data( contentsOf: url), let image = UIImage(data:data){
-                            DispatchQueue.main.async {
-                                app.imagesHash[imagePath] = image
-                                imageView.image = image
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    static func setImage(on imageView: UIImageView, with imagePath: String){
+//        dump(imagePath)
+//        DispatchQueue.main.async {
+//            if let image = app.imagesHash[imagePath] {
+//                imageView.image = image
+//                return
+//            } else {
+//                if let url = URL(string: imagePath){
+//                    DispatchQueue.global().async {
+//                        if let data = try? Data( contentsOf: url), let image = UIImage(data:data){
+//                            DispatchQueue.main.async {
+//                                app.imagesHash[imagePath] = image
+//                                imageView.image = image
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

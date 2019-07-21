@@ -27,7 +27,6 @@ class PurchaseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        selectionStyle = .none
         countryImage1.image = UIImage(named: "ru")
         countryImage2.image = UIImage(named: "bl")
     }

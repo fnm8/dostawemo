@@ -11,4 +11,8 @@ import Foundation
 extension String {
     
     func addRubPostfix() -> String { return self + " Руб" }
+    
+    func carry() -> String {
+        return self.replacingOccurrences(of: "[n]", with: "\n")
+    }
 }

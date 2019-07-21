@@ -46,8 +46,8 @@ class BasketSceneTableViewController: UITableViewController {
     
     private func registerCell(){
         tableView.register(
-            BasketItemTableViewCell.nib,
-            forCellReuseIdentifier: BasketItemTableViewCell.reuseId
+            BasketTitleImageTableViewCell.nib,
+            forCellReuseIdentifier: BasketTitleImageTableViewCell.reuseId
         )
         tableView.register(
             CreateOrderTableViewCell.nib,
@@ -69,8 +69,7 @@ extension BasketSceneTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(viewModel.items.value[section].items.count, "Count")
-        return viewModel.items.value[section].items.count + 3
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -78,26 +77,25 @@ extension BasketSceneTableViewController {
             return getTitleCell(ip: indexPath)
         }
         
-        if indexPath.row == viewModel.items.value[indexPath.section].items.count + 1 {
-            return getPriceCell(ip: indexPath)
+        if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: BasketTitleImageTableViewCell.reuseId,
+                for: indexPath
+            ) as! BasketTitleImageTableViewCell
+            cell.configurate(section: viewModel.items.value[indexPath.section])
+            return cell
         }
         
-        if indexPath.row == viewModel.items.value[indexPath.section].items.count + 2 {
-            return getCreateOrderCell(ip: indexPath)
-        }
-        
-        return getBasketItemCell(ip: indexPath)
+        return getCreateOrderCell(ip: indexPath)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.row {
         case 0:
             return 44
-        case viewModel.items.value[indexPath.section].items.count + 1:
-            return 44
+        case 1:
+            return CGSize.aspectRatioSize(by: tableView.bounds.width).height
             
-        case viewModel.items.value[indexPath.section].items.count + 2:
-            return 60
         default:
             return 100
         }
@@ -108,34 +106,11 @@ extension BasketSceneTableViewController {
     }
     
     private func getTitleCell(ip: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: BasketRightDetailTableViewCell.reuseId,
-            for: ip) as! BasketRightDetailTableViewCell
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
         let item = viewModel.items.value[ip.section]
         cell.textLabel?.text = item.purchaseName
         cell.detailTextLabel?.text = ""
         cell.detailTextLabel?.textColor = .lightGray
-        cell.selectionStyle = .none
-        return cell
-    }
-    
-    private func getBasketItemCell(ip: IndexPath) -> BasketItemTableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: BasketItemTableViewCell.reuseId,
-            for: ip) as! BasketItemTableViewCell
-        cell.selectionStyle = .none
-        cell.configurate(item: viewModel.items.value[ip.section].items[ip.row - 1])
-        return cell
-    }
-    
-    private func getPriceCell(ip: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: BasketRightDetailTableViewCell.reuseId,
-            for: ip) as! BasketRightDetailTableViewCell
-        let item = viewModel.items.value[ip.section]
-        cell.textLabel?.text = "Общая сумма"
-        cell.detailTextLabel?.font = UIFont.boldSystemFont(ofSize: 13)
-        cell.detailTextLabel?.text = "\(item.totalPrice)"
         cell.selectionStyle = .none
         return cell
     }

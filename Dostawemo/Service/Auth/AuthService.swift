@@ -25,16 +25,27 @@ class AuthService{
             }
     }
     
-    static func register(params: Parameters)->Observable<Result<(accessToken: String, refreshToken: String)>>{
+    static func register(params: Parameters)->Observable<Result<(accessToken: String, refreshToken: String, customToken: String)>>{
         return ApiService.responseJson(request: AuthRouter.register(params: params))
-            .map{ res -> Result<(accessToken: String, refreshToken: String)> in
-                print(res.result.value)
+            .map{ res -> Result<(accessToken: String, refreshToken: String, customToken: String)> in
                 guard let json = res.result.value as? [String: Any],
                 let token = json["accessToken"] as? String,
-                let refresh = json["refreshToken"] as? String
+                let refresh = json["refreshToken"] as? String,
+                let customToken = json["customToken"] as? String
                 else { return .failure(LError.serialize("AuthService register")) }
-                return .success((accessToken: token, refreshToken: refresh))
+                return .success((accessToken: token, refreshToken: refresh, customToken: customToken))
         }
+    }
+    
+    static func refresh(refresh: String)->Observable<Result<(cToken: String, aToken: String)>> {
+        return ApiService.responseJson(request: AuthRouter.refresh(token: refresh))
+            .map{ res -> Result<(cToken: String, aToken: String)> in
+                guard let json = res.value as? [String: Any],
+                    let customToken = json["customToken"] as? String,
+                    let accessToken = json["idToken"] as? String
+                else { return .failure(LError.serialize("AuthService refresh")) }
+                return.success((cToken: customToken, aToken: accessToken))
+            }
     }
     
 }

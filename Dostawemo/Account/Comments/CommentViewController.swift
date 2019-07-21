@@ -21,6 +21,10 @@ class CommentViewController: UIViewController {
     @IBOutlet weak var commentListContainer: UIView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
+    @IBOutlet weak var age: UILabel!
+    @IBOutlet weak var signInButton: UIButton!
+    @IBOutlet weak var signInView: UIView!
+    
     private let disposeBag = DisposeBag()
     private var basket: UIBarButtonItem!
     private let visible: CGFloat = 1
@@ -31,6 +35,10 @@ class CommentViewController: UIViewController {
     private let authSegue = "ShowAuthFromAccount"
     private let basketSegue = "ShowBasketFromComment"
     
+    private var viewModel = CommentViewModel()
+    
+    var userIsLoginTapDisposable: Disposable?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setAppTitle()
@@ -40,20 +48,66 @@ class CommentViewController: UIViewController {
         userImageView.clipsToBounds = true
         
         configurateBasketButton()
+        cUser()
+        cSignInButton()
         
         // MARK:
         segmentControl.rx.value.asDriver()
             .drive(onNext: {[weak self] i in self?.segmentValueChange(index: i) })
             .disposed(by: disposeBag)
-        
-        // MARK:
-        let tap = UITapGestureRecognizer()
-        userInfoView.isUserInteractionEnabled = true
-        tap.rx.event.asDriver()
-            .drive(onNext: {[weak self] _ in self?.showProfile()})
-            .disposed(by: disposeBag)
-        userInfoView.addGestureRecognizer(tap)
 
+    }
+    
+    private func cUser(){
+        viewModel.user.asDriver()
+            .drive(onNext: {[weak self] u in
+                if u == nil {
+                    self?.unsetUserData()
+                } else {
+                    self?.setUserData(user: u!)
+                }
+            }).disposed(by: disposeBag)
+    }
+    
+    private func unsetUserData(){
+        DispatchQueue.main.async {
+            self.signInView.isHidden = false
+            self.userIsLoginTapDisposable?.dispose()
+            self.userIsLoginTapDisposable = nil
+        }
+    }
+    
+    private func setUserData(user: User){
+        DispatchQueue.main.async {
+            self.signInView.isHidden = true
+            self.firstNameLabel.text = user.name.isEmpty ? "Имя" : user.name
+            self.secondNameLabel.text = user.lastName.isEmpty ? "Фамилия" : user.lastName
+            self.cityLabel.text = user.city.isEmpty ? "Не указан" : user.city
+            let tap = UITapGestureRecognizer()
+            self.userInfoView.isUserInteractionEnabled = true
+            self.userIsLoginTapDisposable = tap.rx.event.asDriver()
+                .drive(onNext: {[weak self] _ in self?.showProfile()})
+            self.userInfoView.addGestureRecognizer(tap)
+            
+            let year = user.birthday.yearOld()
+            self.age.text = "Возраст: \(year)"
+        }
+        
+    }
+    
+    private func cSignInButton(){
+        signInButton.layer.cornerRadius = signInButton.bounds.height / 2
+        signInButton.rx.tap
+            .asDriver()
+            .drive(onNext: {[weak self] _ in self?.showSignIn() })
+            .disposed(by: disposeBag)
+    }
+    
+    private func showSignIn(){
+        let nav = UINavigationController()
+        let vc = SignInTableViewController(nibName: nil, bundle: nil)
+        nav.setViewControllers([vc], animated: true)
+        self.present(nav, animated: true, completion: nil)
     }
     
     private func configurateBasketButton(){
@@ -70,7 +124,7 @@ class CommentViewController: UIViewController {
 
     
     private func showProfile(){
-        if app.auth == nil {
+        if !app.coordinator.userIsLogin {
             performSegue(withIdentifier: authSegue, sender: nil)
             return
         }

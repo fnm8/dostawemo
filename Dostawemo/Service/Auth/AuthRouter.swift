@@ -13,11 +13,13 @@ enum AuthRouter: URLRequestConvertible {
     
     case getVerificationCode(phone: String)
     case register(params: Parameters)
+    case refresh(token: String)
         
     var method: HTTPMethod {
         switch self {
         case .getVerificationCode:  return .get
         case .register:             return .post
+        case .refresh:              return .get
 
         }
     }
@@ -28,6 +30,8 @@ enum AuthRouter: URLRequestConvertible {
             return "/auth/get-verification-code?phoneNumber=" + phone
         case .register:
             return "/auth/register"
+        case .refresh(let token):
+            return "/auth/refresh-auth-credentials?refreshToken=\(token)"
         }
     }
     
